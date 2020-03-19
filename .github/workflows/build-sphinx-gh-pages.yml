@@ -1,0 +1,54 @@
+# Build Sphinx docs and push to gh-pages branch.
+#
+# A gh-pages branch must exist for the current repository.  This can be created
+# with a .nojekyll file with the following commands:
+#   git checkout --orphan gh-pages
+#   touch .nojekyll
+#   git add .nojekyll
+#   git commit .nojekyll -m 'Add .nojekyll to gh-pages branch'
+#   git push -u origin gh-pages
+
+name: build-sphinx-gh-pages
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  build-docs:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Set gh-pages branch destination variable
+        run: echo "::set-env name=GH_PAGES_CHECKOUT::gh-pages-destination"
+      - name: Install Sphinx and dependencies
+        run: |
+          sudo apt-get install python3-pip latexmk texlive-latex-recommended texlive-latex-extra texlive-fonts-recommended
+          sudo pip3 install sphinx
+      - name: Build Sphinx docs
+        run: make html latexpdf
+      - name: Fetch gh-pages branch
+        uses: actions/checkout@v2
+        with:
+          ref: gh-pages
+          path: ${{ env.GH_PAGES_CHECKOUT }}
+          clean: false
+      - name: Commit documentation changes to gh-pages branch
+        run: |
+          # Copy built HTML and PDF to gh-pages destination
+          cp -r _build/html/* ${{ env.GH_PAGES_CHECKOUT }}/
+          cp _build/latex/xfdsnsourceidentifiers.pdf ${{ env.GH_PAGES_CHECKOUT }}/
+          cd ${{ env.GH_PAGES_CHECKOUT }}
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git add .
+          git commit -m "Update documentation" -a || true
+          # The above command will fail if no changes were present, so we ignore the return code.
+      - name: Push gh-pages branch changes
+        uses: ad-m/github-push-action@master
+        with:
+          branch: gh-pages
+          directory: ${{ env.GH_PAGES_CHECKOUT }}
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+
