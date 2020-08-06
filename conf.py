@@ -51,7 +51,7 @@ exclude_patterns = ['docs', 'Thumbs.db', '.DS_Store']
 # -- Options for HTML output -------------------------------------------------
 
 def setup(app):
-    app.add_css_file('custom.css')
+    app.add_css_file('css/custom.css')
 
 # The theme to use for HTML and HTML Help pages.  See the documentation for
 # a list of builtin themes.
