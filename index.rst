@@ -1,6 +1,7 @@
-.. xFDSN Source Identifiers documentation master file
+.. FDSN Source Identifiers documentation master file
 
-xFDSN Source Identifiers
+========================
+Overview
 ========================
 
 This specification defines the construction of unique identifiers for
@@ -20,7 +21,7 @@ follows:
 
 ::
 
-   XFDSN:<network>_<station>_<location>_<band>_<source>_<position>
+   FDSN:<network>_<station>_<location>_<band>_<source>_<position>
 
 This single-string identifier uniquely identifies a source in FDSN
 formats and services.
@@ -28,9 +29,11 @@ formats and services.
 .. toctree::
    :maxdepth: 2
 
+   self
    definition
    channel-codes
    background
+   FDSN home <https://www.fdsn.org/>
 
 * :ref:`search`
 

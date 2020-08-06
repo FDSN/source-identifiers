@@ -1,10 +1,10 @@
-# Extended FDSN Source Identifier specification
+# FDSN Source Identifier specification
 
 This specification defines the construction of unique identifiers for data sources exchanged and archived in formats and services defined by the [International Federation of Digital Seismograph Networks](https://www.fdsn.org/) (FDSN) and related services and formats.
 
 This repository contains the source of the documentation and serves as a coordination point for additions and changes to the specification.
 
-Documentation rendered for the `master` branch can be found at: https://iris-edu.github.io/xFDSN-source-identifiers/
+Documentation rendered for the `master` branch can be found at: https://iris-edu.github.io/FDSN-source-identifiers/
 
 Specification releases are at: https://some.where.read.the.docs?
 
@@ -19,7 +19,7 @@ Specification releases are at: https://some.where.read.the.docs?
 To propose changes to the specification a submitter must provide two things:
 
 * A written description of the change (motivations, potential impact, etc.).
-* A fork of the most recent `draft` branch of the repository submitted as a pull request (PR) on Github.  The PR should include the changes being proposed.
+* A fork of the most recent `draft` branch of the repository submitted as a pull request (PR) on GitHub.  The PR should include the changes being proposed.
 
 The procedure is as follows:
 
@@ -37,5 +37,5 @@ Changes and issues should only be grouped together when logically
 related in order to streamline review and acceptance.
 
 ## Documentation build and publishing status:
-![](https://github.com/chad-iris/xFDSN-source-identifiers/workflows/build-sphinx-gh-pages/badge.svg)
+![](https://github.com/iris-edu/FDSN-source-identifiers/workflows/build-sphinx-gh-pages/badge.svg)
 

@@ -47,14 +47,14 @@ position. Values for each of these codes are defined in :ref:`channel-codes`.
 Identifiers as a URN
 --------------------
 
-The xFDSN source identifier is a combination of the network, station,
+The FDSN Source Identifier is a combination of the network, station,
 location, band, source and position codes into a Uniform Resource Name
 (URN) as defined by `RFC 3986 <https://www.ietf.org/rfc/rfc3986>`_.
 The pattern of the source identifier URN is as follows:
 
 ::
 
-   XFDSN:<network>_<station>_<location>_<band>_<source>_<position>
+   FDSN:<network>_<station>_<location>_<band>_<source>_<position>
 
 where the network, station and source codes are required to be
 non-empty. The underscore (ASCII 95) delimiters must always be present.
@@ -63,17 +63,17 @@ Example identifiers:
 
 ::
 
-   XFDSN:IU_COLA_00_B_H_Z
+   FDSN:IU_COLA_00_B_H_Z
 
 where network=IU, station=COLA, location=00 and channel=B_H_Z
 
 ::
 
-   XFDSN:NL_HGN__L_H_Z
+   FDSN:NL_HGN__L_H_Z
 
 where network=NL, station=HGN, location is empty and channel=L_H_Z
 
-The ``XFDSN:`` portion is a namespace identifier reserved to identify this
+The ``FDSN:`` portion is a namespace identifier reserved to identify this
 specification.
 
 The formal ``urn:`` URI scheme prefix is not included in source
