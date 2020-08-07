@@ -1,8 +1,15 @@
 
+/* FDSN-style font baseline */
 body {
   font-family: "Quattrocento Sans", Avenir, Helvetica, Arial, sans-serif;
 }
 
+/* Keep the logo from dominating the upper search pane */
+.logo {
+  max-height: 80px;
+}
+
+/* Set colors for search and navigation sidebar */
 .wy-side-nav-search,
 .wy-side-nav-search > a,
 .wy-side-nav-search > div.version,
