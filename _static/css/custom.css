@@ -13,13 +13,13 @@ body {
 
 .wy-menu-vertical header,
 .wy-menu-vertical p.caption {
-  color: darkblue;
+  color: lightgray;
   font-weight: bolder;
 }
 
-.wy-menu-vertical a {
+.wy-menu-vertical a,
+.wy-menu-vertical li.current > a {
   color: white;
-  font-weight: bold;
 }
 
 .wy-menu-vertical li.toctree-l2 a,
@@ -28,7 +28,6 @@ body {
 .wy-menu-vertical li.toctree-l5 a,
 .wy-menu-vertical li.toctree-l6 a {
   color: #404040;
-  font-weight: bold;
 }
 
 .wy-nav-side {
