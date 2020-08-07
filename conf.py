@@ -26,7 +26,6 @@ author = 'FDSN'
 release = '0.0.99'
 version = '0.0.99'
 
-
 # -- General configuration ---------------------------------------------------
 
 # Default in Sphinx 2, but not in older versions
@@ -36,7 +35,7 @@ master_doc = 'index'
 # extensions coming with Sphinx (named 'sphinx.ext.*') or your custom
 # ones.
 extensions = [
-  "sphinx_rtd_theme"
+  'sphinx_rtd_theme',
 ]
 
 # Add any paths that contain templates here, relative to this directory.
@@ -57,13 +56,11 @@ def setup(app):
 # a list of builtin themes.
 #
 html_theme = 'sphinx_rtd_theme'
-#html_theme_options = {
-#    'style_nav_header_background': 'white',
-#}
 
-html_logo='_static/FDSN-Logo-600w.png'
+html_logo='_static/FDSN-logo.png'
 html_favicon = '_static/favicon.ico'
 html_title = 'FDSN Source Identifiers'
+html_show_sphinx = False
 html_search_language = 'en'
 
 # Add any paths that contain custom static files (such as style sheets) here,
@@ -71,5 +68,5 @@ html_search_language = 'en'
 # so a file named "default.css" will overwrite the builtin "default.css".
 html_static_path = ['_static']
 
-fontawesome_link_cdn = 'https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css'
+#fontawesome_link_cdn = 'https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css'
 

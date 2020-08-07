@@ -1,7 +1,6 @@
 
 body {
   font-family: "Quattrocento Sans", Avenir, Helvetica, Arial, sans-serif;
-  font-size: 14;
 }
 
 .wy-side-nav-search,
@@ -12,8 +11,14 @@ body {
   background: white;
 }
 
+.wy-menu-vertical header,
+.wy-menu-vertical p.caption {
+  color: white;
+}
+
 .wy-menu-vertical a {
   color: white;
+  font-weight: bold;
 }
 
 .wy-menu-vertical li.toctree-l2 a,
@@ -21,7 +26,8 @@ body {
 .wy-menu-vertical li.toctree-l4 a,
 .wy-menu-vertical li.toctree-l5 a,
 .wy-menu-vertical li.toctree-l6 a {
-  color: black;
+  color: #404040;
+  font-weight: bold;
 }
 
 .wy-nav-side {
