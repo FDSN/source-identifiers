@@ -13,7 +13,8 @@ body {
 
 .wy-menu-vertical header,
 .wy-menu-vertical p.caption {
-  color: white;
+  color: darkblue;
+  font-weight: bolder;
 }
 
 .wy-menu-vertical a {
