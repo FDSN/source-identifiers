@@ -36,6 +36,7 @@ master_doc = 'index'
 # ones.
 extensions = [
   'sphinx_rtd_theme',
+  'sphinxmark',
 ]
 
 # Add any paths that contain templates here, relative to this directory.
@@ -75,3 +76,9 @@ html_css_files = [
 html_js_files = [
   'js/sidebar_context.js'
 ]
+
+# Mark as draft, disable for releases
+sphinxmark_enable = True
+
+# Sphinxmark options, 'document' is the div for the RTD theme body
+sphinxmark_div = 'document'
