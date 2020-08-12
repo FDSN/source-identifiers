@@ -52,11 +52,31 @@ location, band, source and position codes into a Uniform Resource Name
 (URN) as defined by `RFC 3986 <https://www.ietf.org/rfc/rfc3986>`_.
 The pattern of the source identifier URN is as follows:
 
+For identifying a network:
+
+::
+
+   FDSN:<network>
+
+ For identifying a station within a network:
+
+::
+
+   FDSN:<network>_<station>
+
+For identifying a location group, ie collection of specific channels within a station:
+
+::
+
+   FDSN:<network>_<station>_<location>
+
+For identifying a data source, i.e. a specific channel:
+
 ::
 
    FDSN:<network>_<station>_<location>_<band>_<source>_<position>
 
-where the network, station and source codes are required to be
+where the `network`, `station` and `source` codes are required to be
 non-empty. The underscore (ASCII 95) delimiters must always be present.
 
 Example identifiers:
