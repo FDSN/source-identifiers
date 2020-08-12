@@ -113,8 +113,13 @@ For example, a network deployment allocated a network code of ``XA``
 operating in the years 2002 and 2003 could be mapped to ``XA2002``.
 
 A temporary network operator may wish to request a 6 character network
-code in the transitional mapping pattern above in order have a globally
-unique code that is also usable with miniSEED 2 through the mapping.
+code in the transitional mapping pattern above in order have a
+globally unique code that is also usable with miniSEED 2 through the
+mapping. Furthermore, the FDSN reserves all 6 character network
+codes that match the transitional mapping pattern for all previously
+or future allocated 2 character temporary network codes. Thus the code
+XA2002 must be assigned solely to the temporary network with code XA
+that was operating in 2002.
 
 Location code usage
 -------------------
