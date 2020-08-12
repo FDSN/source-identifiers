@@ -541,6 +541,8 @@ Wind
       =====  ===========
       **S**  Windspeed
       **D**  Wind direction vector, relative to geographic north
+      **H**  Horizontal wind speed
+      **Z**  Vertical wind speed
       =====  ===========
 
    Dip/Azimuth: Not applicable
