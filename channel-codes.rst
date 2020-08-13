@@ -101,15 +101,20 @@ this section.
 
 The subsource code provides a way to indicate the directionality of
 the sensor measurement (orientation), the relative location of the
-sensor or the sensor type.  Subsource codes are source-specific. When
-orthogonal directions are indicated, there are traditional orientation
-values of North (N), East (E), and Vertical (Z), as well as other
-orientations that can be converted to traditional ones. These options
-are detailed with each source type. Only use ``N`` or ``E`` for the
-orientation when it is within 5 degrees of north or east. Use 1 or 2
-when orientations are more than 5 degrees from north or east or to
-avoid any assumptions about the orientation and ensure that the
-metadata is consulted.
+sensor or the sensor type.  Subsource codes are source-specific.
+
+**Subsource codes for orientation**
+
+  Traditional orientation values of North-Source (N), East-West (E),
+  and Vertical (Z) should `only` be used when within 5 degress of true
+  directions.  Do not use **N** or **E** designations if the
+  orientation of horizontal components is known to deviate more than 5
+  degrees from true North/East.
+
+  Orthogonal components but non traditional orientations. If the
+  orientation of the horizontal components is known to deviate more
+  than 5 degrees from true North/East, the respective channels should
+  be named **1**,**2** instead of N,E (N->1, E->2).
 
 Seismometer
 ^^^^^^^^^^^
@@ -139,7 +144,7 @@ Seismometer
       **Z**, **N**, **E**   Traditional (Vertical, North-South, East-West), when with 5 degrees of true directions
       **A**, **B**, **C**   Triaxial (Along the edges of a cube turned up on a corner)
       **T**, **R**          For formed beams or rotated components (Transverse, Radial)
-      **1**, **2**, **3**   Orthogonal components but non traditional orientations
+      **3**, **1**, **2**   Orthogonal components but non traditional orientations
       **U**, **V**, **W**   Optional components
       ===================== ======
 
