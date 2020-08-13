@@ -58,7 +58,7 @@ For identifying a network:
 
    FDSN:<network>
 
- For identifying a station within a network:
+For identifying a station within a network:
 
 ::
 
@@ -155,3 +155,91 @@ meaningful location code values.
 
 .. _Network codes are assigned by the FDSN: http://www.fdsn.org/networks/
 .. _International Registry of Seismograph Stations: http://www.isc.ac.uk/registries/
+
+Mapping of SEED 2.4 codes
+-------------------------
+
+In the SEED 2.4 standard, data sources are identified by a combination
+of network, station, location and channel codes, abbreviated here as a
+`NSLC`. A NSLC can always be mapped to a Source
+Identifier. Conversely, so long as each code is within the length
+restrictions imposed by SEED 2.4, Source Identifiers can be also be
+mapped back to SEED 2.4 codes. The mapping is as follows:
+
+From NSLC to Source Identifier
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+**Network codes**
+
+  Codes the 1-2 character network code is mapped unchanged.
+
+  For temporary networks, starting with X, Y, Z or 0-9, the 2
+  character network code may be mapped either unchanged, or may follow
+  the "Transitional mapping of previously allocated temporary network
+  codes" by appending the start year to create a 6 character code.
+
+**Station codes**
+
+  The 1-5 character station code is mapped unchanged.
+
+**Location codes**
+
+  The 0-2 character location code is mapped unchanged.
+
+**Channel codes**
+
+  The 3-character SEED 2.4 channel codes are split into the three
+  single character `band`, `instrument` and `orientation` codes, which
+  are mapped to the Source Identifier (:ref:`channel-codes`) `band`,
+  `source` and `subsource` codes.
+
+Examples
+""""""""
+
+Permanent network NSLC: 'IU', 'ANMO', '00', 'BHZ' maps to ``FDSN:IU_ANMO_00_B_H_Z``
+
+Permanent network NSLC: 'IU', 'ANMO', '', 'BHZ' maps to ``FDSN:IU_ANMO__B_H_Z`
+
+Temporary network starting in 2002 NSLC: 'XA', 'ABCD', '00', 'BHZ'
+maps to ``FDSN:XA_ABCD_00_B_H_Z`` or to ``FDSN:XA2002_ABCD_00_B_H_Z``
+
+From Source Identifier to NSLC
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+**Network codes**
+
+  Codes between 1 and 2 characters are mapped unchanged.  Network
+  codes following the 6-character "Temporary network codes
+  convention", can be mapped , the first 2 characters of the network
+  code mapped to the NSLC network code by removing the 4 character
+  year.  Otherwise, there is no mapping for network codes greater than
+  2 characters.
+
+**Station codes**
+
+  Codes between 1 to 5 characters are mapped unchanged.  There is no
+  mapping for stations codes greater than 5 characters.
+
+**Locations codes**
+
+  Codes between 0 and 1 characters are mapped unchanged.  There is no
+  mapping for location codes greater than 2 characters.
+
+**Channels codes**
+
+  Code combinations where the Source Identifier (:ref:`channel-codes`)
+  `band`, `source` and `subsource` codes are all 1 character each, are
+  concatenated in this order and mapped to the 3 character NSLC
+  channel codes.  Otherwise, there is no mapping when individual codes
+  greater than 2 characters.
+
+Examples
+""""""""
+
+Permanent network ``FDSN:IU_ANMO_00_B_H_Z`` maps to NSLC: 'IU', 'ANMO', '00', 'BHZ'
+
+Permanent network ``FDSN:IU_ANMO__B_H_Z`` maps to NSLC: 'IU', 'ANMO', '', 'BHZ'
+
+Temporary network starting in 2002 ``FDSN:XA_ABCD_00_B_H_Z`` maps to NSLC: 'XA', 'ABCD', '00', 'BHZ'
+
+Temporary network starting in 2002 ``FDSN:XA2002_ABCD_00_B_H_Z`` maps to NSLC: 'XA', 'ABCD', '00', 'BHZ'
