@@ -6,8 +6,8 @@
 Channel codes
 =============
 
-Band, source and position codes
--------------------------------
+Band, source and subsource codes
+--------------------------------
 
 A *channel* is composed of a sequence of three codes that each
 describe an aspect of the instrumentation and its digitization as
@@ -19,17 +19,19 @@ follows:
    **Source**: Identifies an instrument or other general data source. Cannot
    be empty.
 
-   **Position**: Identifies the orientation or otherwise relative position.
-   The position codes are specific to sources. May be empty.
+   **Subsource**: Identifies a sub-category within the source, often
+   the orientation, relative positon, or sensor type. The meaning of
+   subsource codes are specific to the containing source. May be
+   empty.
 
 A *channel* is the combination of these three codes separated by "_"
-(ASCII 95) in the following pattern: ``band_source_position``, which
+(ASCII 95) in the following pattern: ``band_source_subsource``, which
 forms the end of a source identifier.
 
-For usage of Band codes **A** and **O**, the source and position codes may
-be defined by the generator. In these cases, the source and position
+For usage of Band codes **A** and **O**, the source and subsource codes may
+be defined by the generator. In these cases, the source and subsource
 codes should not exceed three characters each in length. In all other
-cases, source and position codes defined in this specification must be
+cases, source and subsource codes defined in this specification must be
 used.
 
 Two sequences are reserved for special channels: **L_O_G** for the console
@@ -37,7 +39,7 @@ log and the (deprecated) **S_O_H** for general state of health.
 
 .. note::
    All *channels* with single-character *band*, *source*, and
-   *position* codes are equivalent to SEED 2.4 channel designations
+   *subsource* codes are equivalent to SEED 2.4 channel designations
    and vice versa.
 
 
@@ -89,24 +91,25 @@ response band of the instrument (when applicable to the data source).
 
 
 
-Source and Position Codes
--------------------------
+Source and Subsource Codes
+--------------------------
 
 The source code specifies the family to which the sensor belongs or
 otherwise a general data source. In essence, this identifies what is
 being measured or simulated. Each of these source types are detailed in
 this section.
 
-The position code provides a way to indicate the directionality of the
-sensor measurement (orientation) or the relative location of the sensor.
-Position codes are source-specific. When orthogonal directions are used,
-there are traditional orientations of North (N), East (E), and Vertical
-(Z), as well as other orientations that can be converted to traditional
-ones. These options are detailed with each source type. Only use N or E
-for the orientation when it is within 5 degrees of north or east. Use 1
-or 2 when orientations are more than 5 degrees from north or east or to
-avoid any assumptions about the orientation and ensure that the metadata
-is consulted.
+The subsource code provides a way to indicate the directionality of
+the sensor measurement (orientation), the relative location of the
+sensor or the sensor type.  Subsource codes are source-specific. When
+orthogonal directions are indicated, there are traditional orientation
+values of North (N), East (E), and Vertical (Z), as well as other
+orientations that can be converted to traditional ones. These options
+are detailed with each source type. Only use ``N`` or ``E`` for the
+orientation when it is within 5 degrees of north or east. Use 1 or 2
+when orientations are more than 5 degrees from north or east or to
+avoid any assumptions about the orientation and ensure that the
+metadata is consulted.
 
 Seismometer
 ^^^^^^^^^^^
@@ -127,7 +130,7 @@ Seismometer
       **N**       Accelerometer
       ======      ======
 
-   *Position Code*
+   *Subsource Code*
 
    .. table::
       :align: left
@@ -154,7 +157,7 @@ Tilt Meter
 
    **A**
 
-   *Position Code*
+   *Subsource Code*
 
    **N**, **E** - Traditional
 
@@ -180,7 +183,7 @@ Creep Meter
 
    **B**
 
-   *Position Code*
+   *Subsource Code*
 
    None defined
 
@@ -201,7 +204,7 @@ Calibration Input
 
    **C**
 
-   *Position Code*
+   *Subsource Code*
 
    **A**, **B**, **C**, **D** - For when there are only a few cal sources for many devices.
 
@@ -220,7 +223,7 @@ Pressure
 
    **D**
 
-   *Position Code*
+   *Subsource Code*
 
    .. table::
       :align: left
@@ -248,7 +251,7 @@ Electronic Test Point
 
    **E**
 
-   *Position Code*
+   *Subsource Code*
 
    Designate as desired, make mnemonic as possible, use numbers for test
    points, etc.
@@ -278,7 +281,7 @@ Magnetometer
 
    **F**
 
-   *Position Code*
+   *Subsource Code*
 
    **Z**, **N**, **E** - Magnetic
 
@@ -296,7 +299,7 @@ Humidity
 
    **I**
 
-   *Position Code*
+   *Subsource Code*
 
    .. table::
       :align: left
@@ -324,7 +327,7 @@ Rotational Sensor
 
    **J** - High Gain Seismometer
 
-   *Position Code*
+   *Subsource Code*
 
    .. table::
       :align: left
@@ -363,7 +366,7 @@ Temperature
 
    **K**
 
-   *Position Code*
+   *Subsource Code*
 
    .. table::
       :align: left
@@ -389,7 +392,7 @@ Water Current
 
    **O**
 
-   *Position Code*
+   *Subsource Code*
 
    None defined
 
@@ -412,7 +415,7 @@ Geophone
 
    **P**
 
-   *Position Code*
+   *Subsource Code*
 
    **Z**, **N**, **E** - Traditional
 
@@ -432,7 +435,7 @@ Electric Potential
 
    **Q**
 
-   *Position Code*
+   *Subsource Code*
 
    None defined
 
@@ -449,7 +452,7 @@ Rainfall
 
    **R**
 
-   *Position Code*
+   *Subsource Code*
 
    **Z**, **N**, **E** - Traditional
 
@@ -466,7 +469,7 @@ Linear Strain
 
    **S**
 
-   *Position Code*
+   *Subsource Code*
 
    **Z**, **N**, **E** - Vertical, North-South, East-West
 
@@ -484,7 +487,7 @@ Tide
 
    **T**
 
-   *Position Code*
+   *Subsource Code*
 
    **Z** - Always vertical
 
@@ -502,7 +505,7 @@ Bolometer
 
    **U**
 
-   *Position Code*
+   *Subsource Code*
 
    None defined
 
@@ -515,7 +518,7 @@ Volumetric Strain
 
    **V**
 
-   *Position Code*
+   *Subsource Code*
 
    None defined
 
@@ -533,7 +536,7 @@ Wind
 
    **W**
 
-   *Position Code*
+   *Subsource Code*
 
    .. table::
       :align: left
@@ -564,10 +567,10 @@ Derived or generated channel
 
    **X**
 
-   *Position Code*
+   *Subsource Code*
 
    Similar to the observable data that was modified or the observable
-   equivalent for generated time series (synthetics). See Position Codes
+   equivalent for generated time series (synthetics). See subsource codes
    for the corresponding observed channel.
 
    **Further Usage (DEPRECATED)**
@@ -596,7 +599,7 @@ Non-specific instruments
 
    **Y**
 
-   *Position Code*
+   *Subsource Code*
 
    Instrument specific.
 
@@ -619,7 +622,7 @@ Synthesized Beams
 
    **Z**
 
-   *Position Code*
+   *Subsource Code*
 
    .. table::
       :align: left

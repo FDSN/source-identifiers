@@ -31,14 +31,15 @@ codes as used in SEED 2.4.
 -  Subdivide the channel code into individually delimited codes, allowing expansion
    of each:
 
-   -  channel => “band_source_position”, where:
+   -  channel => “band_source_subsource”, where:
 
       -  **Band** indicates the general sampling rate and response band of the data source,
          same meaning as SEED.
       -  **Source** is a code identifying an instrument or other data producer,
-         called the "instrument" code in SEED.
-      -  **Position** is a code identifying orientation or otherwise relative position,
-         called the "orientation" code in SEED.
+         called the `instrument` code in SEED.
+      - **Subsource** is a code identifying a sub-category within the
+         source, often the orientation, relative positon, or sensor
+         type. Called the `orientation` code in SEED.
 
    -  Single character versions of these individual codes are the same as SEED 2.4
 

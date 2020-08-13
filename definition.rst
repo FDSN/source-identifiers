@@ -7,7 +7,7 @@ Definition of identifiers
 Data sources are uniquely identified using a sequence of codes named
 **network**, **station**, **location** and **channel**, where the
 channel is further subdivided into **band**, **source** and
-**position** codes. Each of these codes must be composed of the
+**subsource** codes. Each of these codes must be composed of the
 following ASCII character sets:
 
 -  Uppercase [A-Z], ASCII 65 through 90
@@ -35,20 +35,22 @@ The codes are further defined as follows:
    forbidden as it conflicts with previous usage for designating empty locations.
 
 *Channel*: A sequence of codes that identify the band, source and
-position. Values for each of these codes are defined in :ref:`channel-codes`.
+subsource. Definition and values for each of these codes are in
+:ref:`channel-codes`.
 
     **Band**: Indicates the sampling rate range and response band of
     the data source.
 
     **Source**: Identifies an instrument or other data source.
 
-    **Position**: Identifies the orientation or otherwise relative position.
+    **Subsource**: Identifies a sub-category within the source.
+
 
 Identifiers as a URN
 --------------------
 
 The FDSN Source Identifier is a combination of the network, station,
-location, band, source and position codes into a Uniform Resource Name
+location, band, source and subsource codes into a Uniform Resource Name
 (URN) as defined by `RFC 3986 <https://www.ietf.org/rfc/rfc3986>`_.
 The pattern of the source identifier URN is as follows:
 
@@ -74,7 +76,7 @@ For identifying a data source, i.e. a specific channel:
 
 ::
 
-   FDSN:<network>_<station>_<location>_<band>_<source>_<position>
+   FDSN:<network>_<station>_<location>_<band>_<source>_<subsource>
 
 where the `network`, `station` and `source` codes are required to be
 non-empty. The underscore (ASCII 95) delimiters must always be present.
@@ -198,7 +200,7 @@ Examples
 
 Permanent network NSLC: 'IU', 'ANMO', '00', 'BHZ' maps to ``FDSN:IU_ANMO_00_B_H_Z``
 
-Permanent network NSLC: 'IU', 'ANMO', '', 'BHZ' maps to ``FDSN:IU_ANMO__B_H_Z`
+Permanent network NSLC: 'IU', 'ANMO', '', 'BHZ' maps to ``FDSN:IU_ANMO__B_H_Z``
 
 Temporary network starting in 2002 NSLC: 'XA', 'ABCD', '00', 'BHZ'
 maps to ``FDSN:XA_ABCD_00_B_H_Z`` or to ``FDSN:XA2002_ABCD_00_B_H_Z``
