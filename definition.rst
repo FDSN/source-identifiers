@@ -49,10 +49,10 @@ subsource. Definition and values for each of these codes are in
 Identifiers as a URN
 --------------------
 
-The FDSN Source Identifier is a combination of the network, station,
+The FDSN Source Identifier (SID) is a combination of the network, station,
 location, band, source and subsource codes into a Uniform Resource Name
 (URN) as defined by `RFC 3986 <https://www.ietf.org/rfc/rfc3986>`_.
-The pattern of the source identifier URN is as follows:
+The pattern of the Source Identifier is as follows:
 
 For identifying a network:
 
