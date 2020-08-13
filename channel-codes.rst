@@ -114,7 +114,7 @@ sensor or the sensor type.  Subsource codes are source-specific.
   Orthogonal components but non traditional orientations. If the
   orientation of the horizontal components is known to deviate more
   than 5 degrees from true North/East, the respective channels should
-  be named **1**,**2** instead of N,E (N->1, E->2).
+  be named **1**, **2** instead of N, E (N->1, E->2).
 
 Seismometer
 ^^^^^^^^^^^
