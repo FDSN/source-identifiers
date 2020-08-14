@@ -178,7 +178,8 @@ From NSLC to Source Identifier
   For temporary networks, starting with X, Y, Z or 0-9, the 2
   character network code may be mapped either unchanged, or may follow
   the "Transitional mapping of previously allocated temporary network
-  codes" by appending the start year to create a 6 character code.
+  codes" by appending the start year to create a 6 character code,
+  when the 6-character code has been allocated by the FDSN.
 
 **Station codes**
 
