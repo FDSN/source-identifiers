@@ -111,7 +111,7 @@ sensor or the sensor type.  Subsource codes are source-specific.
   orientation of horizontal components is known to deviate more than 5
   degrees from true North/East.
 
-  Orthogonal components but non traditional orientations. If the
+  For orthogonal components that are in nontraditional orientations, if the
   orientation of the horizontal components is known to deviate more
   than 5 degrees from true North/East, the respective channels should
   be named **1**, **2** instead of N, E (N->1, E->2).
