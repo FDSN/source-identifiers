@@ -168,12 +168,12 @@ Identifier. Conversely, so long as each code is within the length
 restrictions imposed by SEED 2.4, Source Identifiers can be also be
 mapped back to SEED 2.4 codes. The mapping is as follows:
 
-From NSLC to Source Identifier
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+From SEED NSLC to Source Identifier
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 **Network codes**
 
-  Codes the 1-2 character network code is mapped unchanged.
+  The 1 to 2 character network code is mapped without change.
 
   For temporary networks, starting with X, Y, Z or 0-9, the 2
   character network code may be mapped either unchanged, or may follow
@@ -183,17 +183,17 @@ From NSLC to Source Identifier
 
 **Station codes**
 
-  The 1-5 character station code is mapped unchanged.
+  The 1 to 5 character station code is mapped without change.
 
 **Location codes**
 
-  The 0-2 character location code is mapped unchanged.
+  The 0 to 2 character location code is mapped without change.
 
 **Channel codes**
 
-  The 3-character SEED 2.4 channel codes are split into the three
-  single character `band`, `instrument` and `orientation` codes, which
-  are mapped to the Source Identifier (:ref:`channel-codes`) `band`,
+  The 3-character channel codes are split into the three single
+  character `band`, `instrument` and `orientation` codes, which are
+  mapped to the Source Identifier (:ref:`channel-codes`) `band`,
   `source` and `subsource` codes.
 
 Examples
@@ -206,27 +206,26 @@ Permanent network NSLC: 'IU', 'ANMO', '', 'BHZ' maps to ``FDSN:IU_ANMO__B_H_Z``
 Temporary network starting in 2002 NSLC: 'XA', 'ABCD', '00', 'BHZ'
 maps to ``FDSN:XA_ABCD_00_B_H_Z`` or to ``FDSN:XA2002_ABCD_00_B_H_Z``
 
-From Source Identifier to NSLC
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+From Source Identifier to SEED NSLC
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 **Network codes**
 
-  Codes between 1 and 2 characters are mapped unchanged.  Network
-  codes following the 6-character "Temporary network codes
-  convention", can be mapped , the first 2 characters of the network
-  code mapped to the NSLC network code by removing the 4 character
-  year.  Otherwise, there is no mapping for network codes greater than
-  2 characters.
+  Codes from 1 and 2 characters are mapped without change.  Network
+  codes following the 6-character "Temporary network codes convention"
+  are mapped using just the first 2 characters of the code, removing
+  the 4 character year.  Otherwise, there is no mapping for network
+  codes greater than 2 characters.
 
 **Station codes**
 
-  Codes between 1 to 5 characters are mapped unchanged.  There is no
-  mapping for stations codes greater than 5 characters.
+  Codes from 1 to 5 characters are mapped without change.  There is
+  no mapping for stations codes greater than 5 characters.
 
 **Locations codes**
 
-  Codes between 0 and 1 characters are mapped unchanged.  There is no
-  mapping for location codes greater than 2 characters.
+  Codes from 0 and 2 characters are mapped without change.  There
+  is no mapping for location codes greater than 2 characters.
 
 **Channels codes**
 
@@ -234,7 +233,7 @@ From Source Identifier to NSLC
   `band`, `source` and `subsource` codes are all 1 character each, are
   concatenated in this order and mapped to the 3 character NSLC
   channel codes.  Otherwise, there is no mapping when individual codes
-  greater than 2 characters.
+  are greater than 2 characters.
 
 Examples
 """"""""
