@@ -130,9 +130,9 @@ Seismometer
       ======      ======
       **H**       High Gain Seismometer
       **L**       Low Gain Seismometer
-      **G**       Gravimeter
       **M**       Mass Position Seismometer
       **N**       Accelerometer
+      **P**       Very short period seismometer, with natural frequency 5 - 10 Hz or higher
       ======      ======
 
    *Subsource Code*
@@ -410,23 +410,27 @@ Water Current
       **S_O_H** (deprecated) do not denote water current and should be
       avoided when using the “O” Source Code.
 
-Geophone
-^^^^^^^^
+Gravimeter
+^^^^^^^^^^
 
-   Very short period seismometer, with natural frequency 5 - 10 Hz or
-   higher.
+   Measurement of a gravitational field.
 
    *Source Code*
 
-   **P**
+   **G** - Gravitaional sensor
 
    *Subsource Code*
 
-   **Z**, **N**, **E** - Traditional
+   **Z** - Traditionally
+   **1** - Unknown, or not vertical**
 
-   Dip/Azimuth: Ground Motion Vector
+   *Note*: historically some channels from accelerometers have used a
+   instrumentation code of **G**. As of August 2000 the FDSN defined
+   the use of this code as limited to gravity.
 
-   Signal Units: ``m``, ``m/s``, ``m/s**2``
+   Dip/Azimuth: Gravity field Vector
+
+   Signal Units: ``m/s**2``
 
 Electric Potential
 ^^^^^^^^^^^^^^^^^^
