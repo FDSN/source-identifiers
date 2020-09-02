@@ -330,7 +330,7 @@ Rotational Sensor
 
    *Source Code*
 
-   **J** - High Gain Seismometer
+   **J** - Rotation rate sensor
 
    *Subsource Code*
 
