@@ -144,7 +144,8 @@ Seismometer
       **Z**, **N**, **E**   Traditional (Vertical, North-South, East-West), when with 5 degrees of true directions
       **A**, **B**, **C**   Triaxial (Along the edges of a cube turned up on a corner)
       **T**, **R**          For formed beams or rotated components (Transverse, Radial)
-      **3**, **1**, **2**   Orthogonal components but non traditional orientations
+      **Z**, **1**, **2**   Orthogonal components, but non traditional horizontal orientations
+      **3**, **1**, **2**   Orthogonal components, but non traditional orientations
       **U**, **V**, **W**   Optional components
       ===================== ======
 
