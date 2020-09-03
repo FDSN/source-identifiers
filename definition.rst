@@ -22,17 +22,19 @@ The codes are further defined as follows:
 
    **Network code**: Uniquely identifies the owner and network operator
    responsible for the data. `Network codes are assigned by the FDSN <http://www.fdsn.org/networks/>`_.
-   Must be between 1 and 8 characters.
+   Must be between 1 and 8 characters. Further description of :ref:`network-codes`.
 
    **Station code**: Uniquely identifies a station within a
    network. Station codes may be registered with the `International
    Registry of Seismograph Stations <http://www.isc.ac.uk/registries/>`_.
-   Must be between 1 and 8 characters.
+   Must be between 1 and 8 characters.  Otherwise, these may be whatever
+   the operator wishes.
 
    **Location code**: Uniquely identifies a group of channels within a
    station, for example from a specific sensor or sub-processor. Must
    not exceed 8 characters. The special value of “--” (two dashes) is
    forbidden as it conflicts with previous usage for designating empty locations.
+   Further description of :ref:`location-codes`.
 
 *Channel*: A sequence of codes that identify the band, source and
 subsource. Definition and values for each of these codes are in
@@ -45,8 +47,8 @@ subsource. Definition and values for each of these codes are in
 
     **Subsource**: Identifies a sub-category within the source.
 
-Identifiers as a URN
---------------------
+Source Identifiers
+------------------
 
 The FDSN Source Identifier (SID) is a combination of the network, station,
 location, band, source and subsource codes into a Uniform Resource Name
@@ -92,116 +94,6 @@ specification.
 
 The formal ``urn:`` URI scheme prefix is not included in source
 identifiers within FDSN formats.
-
-Network codes
--------------
-
-`Network codes <http://www.fdsn.org/networks/>`_ are assigned by the
-FDSN to uniquely identify the owner and operator responsible for the
-data collected by a network.  Network operators `may request a network
-code <http://www.fdsn.org/networks/request/>`_ as needed for new
-deployments.
-
-Temporary network codes convention
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-Network codes for deployments that are known to be temporary are
-strongly encouraged to include the 4-digit start year of the deployment
-at the end of the code with the following pattern:
-
-::
-
-   <1-4 characters><4-digit start year>
-
-For example, ``SEIS2018`` would be a valid network code and imply that the
-initial deployment was in the year 2018 and is temporary.
-
-.. _transitional-mapping:
-
-Transitional mapping of previously allocated temporary network codes
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
-Historical temporary network codes were allocated as two-character
-codes, with the first character being a digit (0-9) or the letters X,
-Y or Z.  Many of these codes have been reused for different
-deployments in different years and are therefore not globally
-unique. A data owner or delegate data center may wish to convert, or
-provide an alias, for data using the older, 2-character codes. The
-mapping from the 2-character codes is strongly recommended to follow
-this pattern:
-
-::
-
-   <2-character code><4-digit start year>
-
-For example, a network deployment allocated a network code of ``XA``
-operating in the years 2002 and 2003 could be mapped to ``XA2002``.
-
-A temporary network operator may wish to request a 6 character network
-code in the transitional mapping pattern above in order have a
-globally unique code that is also usable with miniSEED 2 through the
-mapping. Furthermore, the FDSN reserves all 6 character network
-codes that match the transitional mapping pattern for all previously
-or future allocated 2 character temporary network codes. Thus the code
-XA2002 must be assigned solely to the temporary network with code XA
-that was operating in 2002.
-
-Special network codes
-^^^^^^^^^^^^^^^^^^^^^
-
-Two network codes are reserved for special cases:
-
-* ``SS`` – used by any institution running a Single Station, but this
-  station should be registered with the `International
-  Registry of Seismograph Stations <http://www.isc.ac.uk/registries/>`_.
-  Care must be given to ensure that the station code is not the same
-  as another station using the SS network code.
-
-* ``XX`` – used for an experimental network. Data stored with this
-  network code should never be distributed.
-
-Location codes
---------------
-
-Location codes are used to logically group channels within a single
-station deployment. This can be for channels produced by the same
-sensor, channels produced in a sub-processor, many sensors deployed in a
-grid or an array, etc.
-
-When used to designate sensors deployed in an array, operators may
-choose to identify a series of sensors using ordered or otherwise
-meaningful location code values.
-
-The use and meaning of the location code is generally up to the
-defining network. However the following guidelines are recommended for
-consistency across networks:
-
-1. Channels that are closely related should have the same location
-   code, e.g. channels from the same instrument that differ only in
-   orientation or sampling rate, like ``B_H_Z`` and ``B_H_E`` or
-   ``B_H_Z`` and ``S_H_Z``, should have the same location code.
-
-2. Sharing a single location code does not necessarily imply the
-   channels come from the same instrument, e.g. the primary
-   seismometer and primary accelerometer might both have location code
-   ``00`` even if they are physically separate instruments.
-
-3. The primary seismic channels at traditional seismic stations should
-   have location code of ``00`` or be empty.
-
-4. Use of an empty location code is recommended only for stations that
-   do not have multiple instruments of the same type and have
-   traditionally not used location codes.
-
-5. Sensors in an array within a station may be logically grouped in a
-   regular, systematic scheme, e.g. incrementing numbers for a linear
-   array, or using two identifiers separated by a dash for a 2D grid.
-
-6. Alpha-numeric ordering should be considered desirable, e.g. using
-   ``01`` to ``10`` instead of ``1`` to ``10`` for a linear array.
-
-7. Otherwise the network may use the location code for any meaningful
-   system of organizing and namespacing channels at a station.
 
 Mapping of SEED 2.4 codes
 -------------------------

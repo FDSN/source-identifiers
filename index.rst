@@ -31,6 +31,8 @@ formats and services.
 
    self
    definition
+   network-codes
+   location-codes
    channel-codes
    background
    FDSN home <https://www.fdsn.org/>
