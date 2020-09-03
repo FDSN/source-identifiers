@@ -21,13 +21,13 @@ ASCII character:
 The codes are further defined as follows:
 
    **Network code**: Uniquely identifies the owner and network operator
-   responsible for the data. `Network codes are assigned by the FDSN`_.
+   responsible for the data. `Network codes are assigned by the FDSN <http://www.fdsn.org/networks/>`_.
    Must be between 1 and 8 characters.
 
    **Station code**: Uniquely identifies a station within a
    network. Station codes may be registered with the `International
-   Registry of Seismograph Stations`_.  Must be between 1 and 8
-   characters.
+   Registry of Seismograph Stations <http://www.isc.ac.uk/registries/>`_.
+   Must be between 1 and 8 characters.
 
    **Location code**: Uniquely identifies a group of channels within a
    station, for example from a specific sensor or sub-processor. Must
@@ -45,9 +45,6 @@ subsource. Definition and values for each of these codes are in
 
     **Subsource**: Identifies a sub-category within the source.
 
-.. _Network codes are assigned by the FDSN: http://www.fdsn.org/networks/
-.. _International Registry of Seismograph Stations: http://www.isc.ac.uk/registries/
-
 Identifiers as a URN
 --------------------
 
@@ -55,24 +52,6 @@ The FDSN Source Identifier (SID) is a combination of the network, station,
 location, band, source and subsource codes into a Uniform Resource Name
 (URN) as defined by `RFC 3986 <https://www.ietf.org/rfc/rfc3986>`_.
 The pattern of the Source Identifier is as follows:
-
-For identifying a network:
-
-::
-
-   FDSN:<network>
-
-For identifying a station within a network:
-
-::
-
-   FDSN:<network>_<station>
-
-For identifying a location group, ie collection of specific channels within a station:
-
-::
-
-   FDSN:<network>_<station>_<location>
 
 For identifying a data source, i.e. a specific channel:
 
@@ -82,6 +61,17 @@ For identifying a data source, i.e. a specific channel:
 
 where the `network`, `station` and `source` codes are required to be
 non-empty. The underscore (ASCII 95) delimiters must always be present.
+
+Abbreviations of the fully qualified identifer may also be used to
+identify higher hierarchical levels such as a `location` (a collection
+of specific channels within a station), a `station` within a network,
+and a `network` as follows:
+
+::
+
+   FDSN:<network>_<station>_<location>
+   FDSN:<network>_<station>
+   FDSN:<network>
 
 Example identifiers:
 
@@ -101,8 +91,7 @@ The ``FDSN:`` portion is a namespace identifier reserved to identify this
 specification.
 
 The formal ``urn:`` URI scheme prefix is not included in source
-identifiers within FDSN formats as they are already identified as
-URNs.
+identifiers within FDSN formats.
 
 Temporary network codes convention
 ----------------------------------
