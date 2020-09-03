@@ -116,6 +116,8 @@ at the end of the code with the following pattern:
 For example, ``SEIS2018`` would be a valid network code and imply that the
 initial deployment was in the year 2018 and is temporary.
 
+.. _transitional-mapping:
+
 Transitional mapping of previously allocated temporary network codes
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
@@ -149,9 +151,14 @@ Special network codes
 
 Two network codes are reserved for special cases:
 
-* ``SS`` – used by any institution running a Single Station, but this station should be registered with the FDSN. Care must be given to insure that the Station Identifier (described below) is not identical to another station using the SS network code.
+* ``SS`` – used by any institution running a Single Station, but this
+  station should be registered with the `International
+  Registry of Seismograph Stations <http://www.isc.ac.uk/registries/>`_.
+  Care must be given to ensure that the station code is not the same
+  as another station using the SS network code.
 
-* ``XX`` – used for an experimental temporary or permanent network. Data collected with this Network Code should never be distributed.
+* ``XX`` – used for an experimental network. Data stored with this
+  network code should never be distributed.
 
 Location codes
 --------------
@@ -215,9 +222,9 @@ From SEED NSLC to Source Identifier
 
   For temporary networks, starting with X, Y, Z or 0-9, the 2
   character network code may be mapped either unchanged, or may follow
-  the "Transitional mapping of previously allocated temporary network
-  codes" by appending the start year to create a 6 character code,
-  when the 6-character code has been allocated by the FDSN.
+  the :ref:`transitional-mapping` by appending the start year to
+  create a 6 character code, when the 6-character code has been
+  allocated by the FDSN.
 
 **Station codes**
 
@@ -250,7 +257,7 @@ From Source Identifier to SEED NSLC
 **Network codes**
 
   Codes from 1 and 2 characters are mapped without change.  Network
-  codes following the 6-character "Temporary network codes convention"
+  codes following the 6-character :ref:`transitional-mapping`
   are mapped using just the first 2 characters of the code, removing
   the 4 character year.  Otherwise, there is no mapping for network
   codes greater than 2 characters.
