@@ -93,8 +93,17 @@ specification.
 The formal ``urn:`` URI scheme prefix is not included in source
 identifiers within FDSN formats.
 
+Network codes
+-------------
+
+`Network codes <http://www.fdsn.org/networks/>`_ are assigned by the
+FDSN to uniquely identify the owner and operator responsible for the
+data collected by a network.  Network operators `may request a network
+code <http://www.fdsn.org/networks/request/>`_ as needed for new
+deployments.
+
 Temporary network codes convention
-----------------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Network codes for deployments that are known to be temporary are
 strongly encouraged to include the 4-digit start year of the deployment
@@ -108,15 +117,16 @@ For example, ``SEIS2018`` would be a valid network code and imply that the
 initial deployment was in the year 2018 and is temporary.
 
 Transitional mapping of previously allocated temporary network codes
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 Historical temporary network codes were allocated as two-character
-codes, with the first character being a digit or the letters X, Y or Z.
-Many of these codes have been reused for different deployments in
-different years and are therefore not globally unique. A data owner or
-delegate data center may wish to convert, or provide an alias, for data
-using the older, 2-character codes. The mapping from the 2-character
-codes is strongly recommended to follow this pattern:
+codes, with the first character being a digit (0-9) or the letters X,
+Y or Z.  Many of these codes have been reused for different
+deployments in different years and are therefore not globally
+unique. A data owner or delegate data center may wish to convert, or
+provide an alias, for data using the older, 2-character codes. The
+mapping from the 2-character codes is strongly recommended to follow
+this pattern:
 
 ::
 
@@ -134,8 +144,17 @@ or future allocated 2 character temporary network codes. Thus the code
 XA2002 must be assigned solely to the temporary network with code XA
 that was operating in 2002.
 
-Location code usage
--------------------
+Special network codes
+^^^^^^^^^^^^^^^^^^^^^
+
+Two network codes are reserved for special cases:
+
+* ``SS`` – used by any institution running a Single Station, but this station should be registered with the FDSN. Care must be given to insure that the Station Identifier (described below) is not identical to another station using the SS network code.
+
+* ``XX`` – used for an experimental temporary or permanent network. Data collected with this Network Code should never be distributed.
+
+Location codes
+--------------
 
 Location codes are used to logically group channels within a single
 station deployment. This can be for channels produced by the same
