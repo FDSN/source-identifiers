@@ -61,11 +61,12 @@ Special network codes
 
 Two network codes are reserved for special cases:
 
-* ``SS`` – used by any institution running a Single Station, but this
-  station should be registered with the `International
+* ``SS`` – This code may be used by any institution running a Single Station,
+  the station should be registered with the `International
   Registry of Seismograph Stations <http://www.isc.ac.uk/registries/>`_.
   Care must be taken to ensure that the station code is not the same
   as another station using the SS network code.
 
-* ``XX`` – used for an experimental network. Data stored with this
-  network code should never be distributed.
+* ``XX`` – This code is not real.  It is reserved for test data, examples or
+  transient usage when a real code cannot be used.  Data with this network
+  code should never be distributed.
