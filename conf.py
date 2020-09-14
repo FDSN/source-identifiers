@@ -50,6 +50,12 @@ exclude_patterns = ['docs', 'Thumbs.db', '.DS_Store']
 
 # -- Options for HTML output -------------------------------------------------
 
+# Allow :strike:`TEXT` to be used in RST for strikethrough styling
+rst_prolog = """
+.. role:: strike
+    :class: strike
+"""
+
 # The theme to use for HTML and HTML Help pages.  See the documentation for
 # a list of builtin themes.
 #
@@ -71,6 +77,7 @@ html_static_path = ['_static']
 
 html_css_files = [
   'css/fdsn_rtd_theme.css',
+  'css/custom.css',
 ]
 
 html_js_files = [

@@ -28,14 +28,14 @@ A *channel* is the combination of these three codes separated by "_"
 (ASCII 95) in the following pattern: ``band_source_subsource``, which
 forms the end of a source identifier.
 
-For usage of Band codes **A** and **O**, the source and subsource codes may
-be defined by the generator. In these cases, the source and subsource
-codes should not exceed three characters each in length. In all other
-cases, source and subsource codes defined in this specification must be
-used.
+For usage of Band codes **A** and **O** (both deprecated), the source
+and subsource codes may be defined by the generator. In these cases,
+the source and subsource codes should not exceed three characters each
+in length. In all other cases, source and subsource codes defined in
+this specification must be used.
 
-Two sequences are reserved for special channels: **L_O_G** for the console
-log and the (deprecated) **S_O_H** for general state of health.
+Two sequences are reserved for special channels, both deprecated:
+**L_O_G** for the console log and **S_O_H** for general state of health.
 
 .. note::
    All *channels* with single-character *band*, *source*, and
@@ -88,11 +88,12 @@ response band of the instrument (when applicable to the data source).
 +----------+-------------------------+-----------------------------+------------------+
 |**Q**     |Greater than 10 days     |< 0.000001                   |                  |
 +----------+-------------------------+-----------------------------+------------------+
-|**A**     |Administrative Channel   |variable                     |                  |
+|**I**     |Irregularly sampled      |irregular                    |                  |
 +----------+-------------------------+-----------------------------+------------------+
-|**O**     |Opaque Channel           |variable                     |                  |
+|**A**     |:strike:`Administrative` |variable, DEPRECATED         |                  |
 +----------+-------------------------+-----------------------------+------------------+
-
+|**O**     |:strike:`Opaque`         |variable, DEPRECATED         |                  |
++----------+-------------------------+-----------------------------+------------------+
 
 Source and Subsource Codes
 --------------------------
@@ -416,7 +417,7 @@ Water Current
 
    .. note::
       The special, administrative channel codes of **L_O_G** and
-      **S_O_H** (deprecated) do not denote water current and should be
+      **S_O_H** (both deprecated) do not denote water current and should be
       avoided when using the “O” Source Code.
 
 Gravimeter
