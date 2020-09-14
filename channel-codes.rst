@@ -223,10 +223,9 @@ Calibration Input
 Pressure
 ^^^^^^^^
 
-   A barometer, or microbarometer that measures pressure. Used to
-   measure the atmospheric pressure or sometimes for state of health
-   monitoring down hole. This includes infrasonic and hydrophone
-   measurements.
+   A barometer, microbarometer, or other gauge that measures pressure.
+   Used to measure the atmospheric pressure and water pressure.  This
+   includes infrasonic and hydrophone measurements.
 
    *Source Code*
 
@@ -242,11 +241,17 @@ Pressure
       **I**   Inside
       **D**   Down hole
       **F**   Infrasound
+      **G**   Differential pressure gauge
       **H**   Hydrophone
       **U**   Underground
       ======  ===========
 
-   Dip/Azimuth: Not applicable
+   Dip/Azimuth: For many pressure measurements Dip and Azimuth are not
+   applicable.  If the signal will be used for seismological
+   applications, set Dip to -90 if a positive pressure change gives a
+   positive signal, 90 if a positive pressure change gives a negative
+   signal. This will align polarities with the vertical seismometer
+   channel for UPGOING waves.
 
    Signal Units: ``Pa`` (Pascal)
 
