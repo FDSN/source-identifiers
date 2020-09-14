@@ -224,7 +224,7 @@ Pressure
 ^^^^^^^^
 
    A barometer, microbarometer, or other gauge that measures pressure.
-   Used to measure the atmospheric pressure and water pressure.  This
+   Used to measure atmospheric, water, and any other pressure.  This
    includes infrasonic and hydrophone measurements.
 
    *Source Code*
