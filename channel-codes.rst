@@ -277,7 +277,7 @@ Pressure
       **I**   Inside
       **D**   Down hole
       **F**   Infrasound
-      **G**   Differential pressure gauge
+      **G**   Deep sea differential pressure gauge
       **H**   Hydrophone
       **U**   Underground
       ======  ===========
