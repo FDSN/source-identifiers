@@ -107,45 +107,43 @@ The subsource code provides a way to indicate the directionality of
 the sensor measurement (orientation), the relative location of the
 sensor or the sensor type.  Subsource codes are source-specific.
 
-  **Subsource codes for orientation**
-
-    Traditional orientation values of North-Source (N), East-West (E),
-    and Vertical (Z) should `only` be used when within 5 degress of
-    true directions.  Do not use **N** or **E** designations if the
-    orientation of horizontal components is known to deviate more than
-    5 degrees from true North/East.
-
-    For orthogonal components that are in nontraditional orientations,
-    if the orientation of the horizontal components is known to
-    deviate more than 5 degrees from true North/East, the respective
-    channels should be named **1**, **2** instead of N, E (N->1,
-    E->2).
-
 .. _geographic-orientation:
 
-  **Geographic orientation subsource codes**
+   **Geographic orientation subsource codes**
 
-    For sources that record data in a direction typically aligned with
-    geographical coordinate systems, the subsource identifier should
-    follow the these conventions (where appropriate):
+   Traditional orientation values of North-Source (N), East-West (E),
+   and Vertical (Z) should `only` be used when within 5 degress of
+   true directions.  Do not use **N** or **E** designations if the
+   orientation of horizontal components is known to deviate more than
+   5 degrees from true North/East.
 
-    +--------------------+-----------------------------------------------------------+
-    |Subsource codes     |Description                                                |
-    +====================+===========================================================+
-    |**Z**, **N**, **E** | Traditional orthogonal (Up-Down, North-South, East-West)  |
-    |                    |                                                           |
-    |                    | *When with 5 degrees of true directions*                  |
-    +--------------------+-----------------------------------------------------------+
-    |**3**, **1**, **2** | Orthogonal components, nontraditional orientations        |
-    +--------------------+-----------------------------------------------------------+
-    |**Z**, **1**, **2** | Orthogonal components, nontraditional horizontals         |
-    +--------------------+-----------------------------------------------------------+
-    |**T**, **R**        | For rotated components or beams (Transverse, Radial)      |
-    +--------------------+-----------------------------------------------------------+
-    |**A**, **B**, **C** | Triaxial (Along the edges of a cube turned up on a corner)|
-    +--------------------+-----------------------------------------------------------+
-    |**U**, **V**, **W** | Optional components, also used for raw triaxial output    |
-    +--------------------+-----------------------------------------------------------+
+   For orthogonal components that are in nontraditional orientations,
+   if the orientation of the horizontal components is known to
+   deviate more than 5 degrees from true North and East, the
+   respective channels should be named **1**, **2** instead of N, E
+   (N->1, E->2).
+
+   For sources that record data in a direction typically aligned with
+   geographical coordinate systems, the subsource identifier should
+   follow these conventions (where appropriate):
+
+   +--------------------+------------------------------------------------------------+
+   |Subsource codes     | Description                                                |
+   +====================+============================================================+
+   |**N**, **E**, **Z** | Traditional orientations of North (N), East (E), and Up (Z)|
+   |                    |                                                            |
+   |                    | *When within 5 degrees of true directions*                 |
+   +--------------------+------------------------------------------------------------+
+   |**1**, **2**, **Z** | Orthogonal components, nontraditional horizontals          |
+   +--------------------+------------------------------------------------------------+
+   |**1**, **2**, **3** | Orthogonal components, nontraditional orientations         |
+   +--------------------+------------------------------------------------------------+
+   |**T**, **R**        | For rotated components or beams (Transverse, Radial)       |
+   +--------------------+------------------------------------------------------------+
+   |**A**, **B**, **C** | Triaxial (Along the edges of a cube turned up on a corner) |
+   +--------------------+------------------------------------------------------------+
+   |**U**, **V**, **W** | Optional components, also used for raw triaxial output     |
+   +--------------------+------------------------------------------------------------+
 
 Seismometer
 ^^^^^^^^^^^
@@ -154,7 +152,6 @@ Seismometer
    the the dip and azimuth.
 
    *Source Code*
-
 
    .. table::
       :align: left
@@ -167,24 +164,23 @@ Seismometer
       **P**       Geophone, very short period seismometer with natural frequency 5 - 10 Hz or higher
       ======      ======
 
-   *Subsource Code*
+   *Subsource Code* - See :ref:`Geographic orientation codes <geographic-orientation>` for more details.
 
-   See :ref:`Geographic orientation codes <geographic-orientation>`
-   for descriptions of these subsource codes.
-
-   +--------------------+-------------------------------------------------------------------+
-   |**Z**, **N**, **E** | See :ref:`Geographic orientation codes <geographic-orientation>`  |
-   +--------------------+-------------------------------------------------------------------+
-   |**3**, **1**, **2** | See :ref:`Geographic orientation codes <geographic-orientation>`  |
-   +--------------------+-------------------------------------------------------------------+
-   |**Z**, **1**, **2** | See :ref:`Geographic orientation codes <geographic-orientation>`  |
-   +--------------------+-------------------------------------------------------------------+
-   |**T**, **R**        | See :ref:`Geographic orientation codes <geographic-orientation>`  |
-   +--------------------+-------------------------------------------------------------------+
-   |**A**, **B**, **C** | See :ref:`Geographic orientation codes <geographic-orientation>`  |
-   +--------------------+-------------------------------------------------------------------+
-   |**U**, **V**, **W** | See :ref:`Geographic orientation codes <geographic-orientation>`  |
-   +--------------------+-------------------------------------------------------------------+
+   +--------------------+------------------------------------------------------------+
+   |**N**, **E**, **Z** | Traditional orientations of North (N), East (E), and Up (Z)|
+   |                    |                                                            |
+   |                    | *When within 5 degrees of true directions*                 |
+   +--------------------+------------------------------------------------------------+
+   |**1**, **2**, **Z** | Orthogonal components, nontraditional horizontals          |
+   +--------------------+------------------------------------------------------------+
+   |**1**, **2**, **3** | Orthogonal components, nontraditional orientations         |
+   +--------------------+------------------------------------------------------------+
+   |**T**, **R**        | For rotated components or beams (Transverse, Radial)       |
+   +--------------------+------------------------------------------------------------+
+   |**A**, **B**, **C** | Triaxial (Along the edges of a cube turned up on a corner) |
+   +--------------------+------------------------------------------------------------+
+   |**U**, **V**, **W** | Optional components, also used for raw triaxial output     |
+   +--------------------+------------------------------------------------------------+
 
    Dip/Azimuth: Ground motion vector
 
@@ -200,9 +196,15 @@ Tilt Meter
 
    **A**
 
-   *Subsource Code*
+   *Subsource Code* - See :ref:`Geographic orientation codes <geographic-orientation>` for more details.
 
-   **N**, **E** - Traditional
+   +--------------------+------------------------------------------------------------+
+   |**N**, **E**        | Traditional orientations of North (N), East (E), and Up (Z)|
+   |                    |                                                            |
+   |                    | *When within 5 degrees of true directions*                 |
+   +--------------------+------------------------------------------------------------+
+   |**1**, **2**        | Orthogonal components, nontraditional orientations         |
+   +--------------------+------------------------------------------------------------+
 
    Dip/Azimuth: Ground motion vector
 
@@ -249,7 +251,7 @@ Calibration Input
 
    *Subsource Code*
 
-   **A**, **B**, **C**, **D** - For when there are only a few cal sources for many devices.
+   **A**, **B**, **C**, **D** - For when there are only a few calibration sources for many devices.
 
    Blank if there is only one calibrator at a time or, match calibrated
    channel (i.e. **Z**, **N** or **E**).
@@ -311,19 +313,17 @@ Electronic Test Point
 Magnetometer
 ^^^^^^^^^^^^
 
-   Measures the magnetic field at the sensor location. They measure the
-   part of the field
+   Measures the magnetic field at the sensor location. They measure
+   the part of the field vector that is aligned with the measurement
+   coil. Many magnetometers are three axis. The instrument will
+   typically be oriented to local magnetic north. The dip and azimuth
+   should describe this in terms of the geographic north.
 
-   vector that is aligned with the measurement coil. Many magnetometers
-   are three axis. The instrument will typically be oriented to local
-   magnetic north. The dip and azimuth should describe this in terms of
-   the geographic north.
-
-   Example: Local magnetic north is 13 degrees east of north in
-   Albuquerque. So if the magnetometer is pointed to magnetic north, the
+   Example: Assuming magnetic north is 13 degrees east of north at the
+   recording site, if the magnetometer is pointed to magnetic north, the
    azimuth would be + 103 for the E channel. Some magnetometers do not
    record any vector quantity associated with the signal, but record the
-   total intensity. So, these would not have any dip/ azimuth.
+   total intensity. So, these would not have any dip or azimuth.
 
    *Source Code*
 
@@ -375,19 +375,23 @@ Rotational Sensor
 
    **J** - Rotation rate sensor
 
-   *Subsource Code*
+   *Subsource Code* - See :ref:`Geographic orientation codes <geographic-orientation>` for more details.
 
-   .. table::
-      :align: left
-
-      ==========================   ===========
-      **Z**, **N**, **E**          Traditional (Vertical, North-South, East-West)
-      **A**, **B**, **C**          Triaxial (Along the edges of a cube turned up on a corner)
-      **T**, **R**                 For formed beams (Transverse, Radial)
-      **Z**, **1**, **2**          Orthogonal components, but non traditional horizontal orientations
-      **1**, **2**, **3**          Orthogonal components, but non traditional orientations
-      **U**, **V**, **W**          Optional components
-      ==========================   ===========
+   +--------------------+------------------------------------------------------------+
+   |**N**, **E**, **Z** | Traditional orientations of North (N), East (E), and Up (Z)|
+   |                    |                                                            |
+   |                    | *When within 5 degrees of true directions*                 |
+   +--------------------+------------------------------------------------------------+
+   |**1**, **2**, **Z** | Orthogonal components, nontraditional horizontals          |
+   +--------------------+------------------------------------------------------------+
+   |**1**, **2**, **3** | Orthogonal components, nontraditional orientations         |
+   +--------------------+------------------------------------------------------------+
+   |**T**, **R**        | For rotated components or beams (Transverse, Radial)       |
+   +--------------------+------------------------------------------------------------+
+   |**A**, **B**, **C** | Triaxial (Along the edges of a cube turned up on a corner) |
+   +--------------------+------------------------------------------------------------+
+   |**U**, **V**, **W** | Optional components, also used for raw triaxial output     |
+   +--------------------+------------------------------------------------------------+
 
    Dip/Azimuth: Axis about which rotation is measured following
    right-handed rule.
@@ -506,7 +510,7 @@ Rainfall
 
    *Subsource Code*
 
-   **Z**, **N**, **E** - Traditional
+   None defined
 
    Dip/Azimuth: Not applicable
 
@@ -521,9 +525,15 @@ Linear Strain
 
    **S**
 
-   *Subsource Code*
+   *Subsource Code* - See :ref:`Geographic orientation codes <geographic-orientation>` for more details.
 
-   **Z**, **N**, **E** - Vertical, North-South, East-West
+   +--------------------+------------------------------------------------------------+
+   |**N**, **E**, **Z** | Traditional orientations of North (N), East (E), and Up (Z)|
+   |                    |                                                            |
+   |                    | *When within 5 degrees of true directions*                 |
+   +--------------------+------------------------------------------------------------+
+   |**1**, **2**, **3** | Nontraditional orientations                                |
+   +--------------------+------------------------------------------------------------+
 
    Dip/Azimuth: Along axis of measurement
 
