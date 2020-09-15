@@ -107,18 +107,45 @@ The subsource code provides a way to indicate the directionality of
 the sensor measurement (orientation), the relative location of the
 sensor or the sensor type.  Subsource codes are source-specific.
 
-**Subsource codes for orientation**
+  **Subsource codes for orientation**
 
-  Traditional orientation values of North-Source (N), East-West (E),
-  and Vertical (Z) should `only` be used when within 5 degress of true
-  directions.  Do not use **N** or **E** designations if the
-  orientation of horizontal components is known to deviate more than 5
-  degrees from true North/East.
+    Traditional orientation values of North-Source (N), East-West (E),
+    and Vertical (Z) should `only` be used when within 5 degress of
+    true directions.  Do not use **N** or **E** designations if the
+    orientation of horizontal components is known to deviate more than
+    5 degrees from true North/East.
 
-  For orthogonal components that are in nontraditional orientations, if the
-  orientation of the horizontal components is known to deviate more
-  than 5 degrees from true North/East, the respective channels should
-  be named **1**, **2** instead of N, E (N->1, E->2).
+    For orthogonal components that are in nontraditional orientations,
+    if the orientation of the horizontal components is known to
+    deviate more than 5 degrees from true North/East, the respective
+    channels should be named **1**, **2** instead of N, E (N->1,
+    E->2).
+
+.. _geographic-orientation:
+
+  **Geographic orientation subsource codes**
+
+    For sources that record data in a direction typically aligned with
+    geographical coordinate systems, the subsource identifier should
+    follow the these conventions (where appropriate):
+
+    +--------------------+-----------------------------------------------------------+
+    |Subsource codes     |Description                                                |
+    +====================+===========================================================+
+    |**Z**, **N**, **E** | Traditional orthogonal (Up-Down, North-South, East-West)  |
+    |                    |                                                           |
+    |                    | *When with 5 degrees of true directions*                  |
+    +--------------------+-----------------------------------------------------------+
+    |**3**, **1**, **2** | Orthogonal components, nontraditional orientations        |
+    +--------------------+-----------------------------------------------------------+
+    |**Z**, **1**, **2** | Orthogonal components, nontraditional horizontals         |
+    +--------------------+-----------------------------------------------------------+
+    |**T**, **R**        | For rotated components or beams (Transverse, Radial)      |
+    +--------------------+-----------------------------------------------------------+
+    |**A**, **B**, **C** | Triaxial (Along the edges of a cube turned up on a corner)|
+    +--------------------+-----------------------------------------------------------+
+    |**U**, **V**, **W** | Optional components, also used for raw triaxial output    |
+    +--------------------+-----------------------------------------------------------+
 
 Seismometer
 ^^^^^^^^^^^
@@ -128,6 +155,7 @@ Seismometer
 
    *Source Code*
 
+
    .. table::
       :align: left
 
@@ -136,22 +164,27 @@ Seismometer
       **L**       Low Gain Seismometer
       **M**       Mass Position Seismometer
       **N**       Accelerometer
-      **P**       Very short period seismometer, with natural frequency 5 - 10 Hz or higher
+      **P**       Geophone, very short period seismometer with natural frequency 5 - 10 Hz or higher
       ======      ======
 
    *Subsource Code*
 
-   .. table::
-      :align: left
+   See :ref:`Geographic orientation codes <geographic-orientation>`
+   for descriptions of these subsource codes.
 
-      ===================== ======
-      **Z**, **N**, **E**   Traditional (Vertical, North-South, East-West), when with 5 degrees of true directions
-      **A**, **B**, **C**   Triaxial (Along the edges of a cube turned up on a corner)
-      **T**, **R**          For formed beams or rotated components (Transverse, Radial)
-      **Z**, **1**, **2**   Orthogonal components, but non traditional horizontal orientations
-      **3**, **1**, **2**   Orthogonal components, but non traditional orientations
-      **U**, **V**, **W**   Optional components
-      ===================== ======
+   +--------------------+-------------------------------------------------------------------+
+   |**Z**, **N**, **E** | See :ref:`Geographic orientation codes <geographic-orientation>`  |
+   +--------------------+-------------------------------------------------------------------+
+   |**3**, **1**, **2** | See :ref:`Geographic orientation codes <geographic-orientation>`  |
+   +--------------------+-------------------------------------------------------------------+
+   |**Z**, **1**, **2** | See :ref:`Geographic orientation codes <geographic-orientation>`  |
+   +--------------------+-------------------------------------------------------------------+
+   |**T**, **R**        | See :ref:`Geographic orientation codes <geographic-orientation>`  |
+   +--------------------+-------------------------------------------------------------------+
+   |**A**, **B**, **C** | See :ref:`Geographic orientation codes <geographic-orientation>`  |
+   +--------------------+-------------------------------------------------------------------+
+   |**U**, **V**, **W** | See :ref:`Geographic orientation codes <geographic-orientation>`  |
+   +--------------------+-------------------------------------------------------------------+
 
    Dip/Azimuth: Ground motion vector
 
