@@ -13,17 +13,18 @@
 # import os
 # import sys
 # sys.path.insert(0, os.path.abspath('.'))
+import sphinx_rtd_theme
 
 
 # -- Project information -----------------------------------------------------
 
-project = 'xFDSN Source Identifiers'
-copyright = '2020, <A href="https://www.fdsn.org/">FDSN</A>'
+project = 'FDSN Source Identifiers'
+copyright = '2020, International FDSN'
 author = 'FDSN'
 
 # The full version, including alpha/beta/rc tags
-release = '0.0.0'
-
+release = '0.0.99'
+version = '0.0.99'
 
 # -- General configuration ---------------------------------------------------
 
@@ -34,6 +35,8 @@ master_doc = 'index'
 # extensions coming with Sphinx (named 'sphinx.ext.*') or your custom
 # ones.
 extensions = [
+  'sphinx_rtd_theme',
+  'sphinxmark',
 ]
 
 # Add any paths that contain templates here, relative to this directory.
@@ -47,25 +50,24 @@ exclude_patterns = ['docs', 'Thumbs.db', '.DS_Store']
 
 # -- Options for HTML output -------------------------------------------------
 
+# Allow :strike:`TEXT` to be used in RST for strikethrough styling
+rst_prolog = """
+.. role:: strike
+    :class: strike
+"""
+
 # The theme to use for HTML and HTML Help pages.  See the documentation for
 # a list of builtin themes.
 #
-html_theme = 'alabaster'
+html_theme = 'sphinx_rtd_theme'
 html_theme_options = {
-    'logo': 'FDSN-Logo-600w.png',
-    'logo_name': True,
-    'fixed_sidebar': True,
-    'github_user': 'FDSN',
-    'github_repo': 'xFDSN-source-identifiers',
-    'github_banner': False,
-    'github_button': True,
-    'show_powered_by': False,
-    'font_family': '"Quattrocento Sans", Avenir, Helvetica, Arial, sans-serif',
-    'font_size': 14,
+    'sticky_navigation': False,
 }
 
+html_logo='_static/FDSN-logo.png'
 html_favicon = '_static/favicon.ico'
-html_title = 'Specification'
+html_title = 'FDSN Source Identifiers'
+html_show_sphinx = False
 html_search_language = 'en'
 
 # Add any paths that contain custom static files (such as style sheets) here,
@@ -73,5 +75,17 @@ html_search_language = 'en'
 # so a file named "default.css" will overwrite the builtin "default.css".
 html_static_path = ['_static']
 
-fontawesome_link_cdn = 'https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css'
+html_css_files = [
+  'css/fdsn_rtd_theme.css',
+  'css/custom.css',
+]
 
+html_js_files = [
+  'js/sidebar_context.js'
+]
+
+# Mark as draft, disable for releases
+sphinxmark_enable = True
+
+# Sphinxmark options, 'document' is the div for the RTD theme body
+sphinxmark_div = 'document'

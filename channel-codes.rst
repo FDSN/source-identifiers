@@ -6,8 +6,8 @@
 Channel codes
 =============
 
-Band, source and position codes
--------------------------------
+Band, source and subsource codes
+--------------------------------
 
 A *channel* is composed of a sequence of three codes that each
 describe an aspect of the instrumentation and its digitization as
@@ -19,25 +19,27 @@ follows:
    **Source**: Identifies an instrument or other general data source. Cannot
    be empty.
 
-   **Position**: Identifies the orientation or otherwise relative position.
-   The position codes are specific to sources. May be empty.
+   **Subsource**: Identifies a sub-category within the source, often
+   the orientation, relative positon, or sensor type. The meaning of
+   subsource codes are specific to the containing source. May be
+   empty.
 
 A *channel* is the combination of these three codes separated by "_"
-(ASCII 95) in the following pattern: ``band_source_position``, which
+(ASCII 95) in the following pattern: ``band_source_subsource``, which
 forms the end of a source identifier.
 
-For usage of Band codes **A** and **O**, the source and position codes may
-be defined by the generator. In these cases, the source and position
-codes should not exceed three characters each in length. In all other
-cases, source and position codes defined in this specification must be
-used.
+For usage of Band codes **A** and **O** (both deprecated), the source
+and subsource codes may be defined by the generator. In these cases,
+the source and subsource codes should not exceed three characters each
+in length. In all other cases, source and subsource codes defined in
+this specification must be used.
 
-Two sequences are reserved for special channels: **L_O_G** for the console
-log and the (deprecated) **S_O_H** for general state of health.
+Two sequences are reserved for special channels, both deprecated:
+**L_O_G** for the console log and **S_O_H** for general state of health.
 
 .. note::
    All *channels* with single-character *band*, *source*, and
-   *position* codes are equivalent to SEED 2.4 channel designations
+   *subsource* codes are equivalent to SEED 2.4 channel designations
    and vice versa.
 
 
@@ -47,66 +49,101 @@ Band Code
 The band code specifies the general sampling rate and the approximate
 response band of the instrument (when applicable to the data source).
 
-+----------+----------------------------------+-------------------------+------------------+
-|Band code |Band type                         |Sample rate (Hz)         |Lower bound (sec) |
-+==========+==================================+=========================+==================+
-|**F**     |...                               |>= 1000 to < 5000        |>= 10 sec         |
-+----------+----------------------------------+-------------------------+------------------+
-|**G**     |...                               |>= 1000 to < 5000        |< 10 sec          |
-+----------+----------------------------------+-------------------------+------------------+
-|**D**     |...                               |>= 250 to < 1000         |< 10 sec          |
-+----------+----------------------------------+-------------------------+------------------+
-|**C**     |...                               |>= 250 to < 1000         |>= 10 sec         |
-+----------+----------------------------------+-------------------------+------------------+
-|**E**     |Extremely Short Period            |>= 80 to < 250           |< 10 sec          |
-+----------+----------------------------------+-------------------------+------------------+
-|**S**     |Short Period                      |>= 10 to < 80            |< 10 sec          |
-+----------+----------------------------------+-------------------------+------------------+
-|**H**     |High Broadband                    |>= 80 to < 250           |>= 10 sec         |
-+----------+----------------------------------+-------------------------+------------------+
-|**B**     |Broadband                         |>= 10 to < 80            |>= 10 sec         |
-+----------+----------------------------------+-------------------------+------------------+
-|**M**     |Mid Period                        |> 1 to < 10              |                  |
-+----------+----------------------------------+-------------------------+------------------+
-|**L**     |Long Period                       |~ 1                      |                  |
-+----------+----------------------------------+-------------------------+------------------+
-|**V**     |Very Long Period                  |~ 0.1                    |                  |
-+----------+----------------------------------+-------------------------+------------------+
-|**U**     |Ultra Long Period                 |~ 0.01                   |                  |
-+----------+----------------------------------+-------------------------+------------------+
-|**R**     |Extremely Long Period             |>= 0.0001 to < 0.001     |                  |
-+----------+----------------------------------+-------------------------+------------------+
-|**P**     |On the order of 0.1 to 1 day [1]  |>= 0.00001 to < 0.0001   |                  |
-+----------+----------------------------------+-------------------------+------------------+
-|**T**     |On the order of 1 to 10 days [1]  |>= 0.000001 to < 0.00001 |                  |
-+----------+----------------------------------+-------------------------+------------------+
-|**Q**     |Greater than 10 days [1]          |< 0.000001               |                  |
-+----------+----------------------------------+-------------------------+------------------+
-|**A**     |Administrative Instrument Channel |variable                 |                  |
-+----------+----------------------------------+-------------------------+------------------+
-|**O**     |Opaque Instrument Channel         |variable                 |                  |
-+----------+----------------------------------+-------------------------+------------------+
++----------+-------------------------+-----------------------------+------------------+
+|Band code |Band type                |Sample rate (samples per sec)|Lower bound (sec) |
++==========+=========================+=============================+==================+
+|**J**     |...                      |> 5000                       |                  |
++----------+-------------------------+-----------------------------+------------------+
+|**F**     |...                      |>= 1000 to < 5000            |>= 10 sec         |
++----------+-------------------------+-----------------------------+------------------+
+|**G**     |...                      |>= 1000 to < 5000            |< 10 sec          |
++----------+-------------------------+-----------------------------+------------------+
+|**D**     |...                      |>= 250 to < 1000             |< 10 sec          |
++----------+-------------------------+-----------------------------+------------------+
+|**C**     |...                      |>= 250 to < 1000             |>= 10 sec         |
++----------+-------------------------+-----------------------------+------------------+
+|**E**     |Extremely Short Period   |>= 80 to < 250               |< 10 sec          |
++----------+-------------------------+-----------------------------+------------------+
+|**S**     |Short Period             |>= 10 to < 80                |< 10 sec          |
++----------+-------------------------+-----------------------------+------------------+
+|**H**     |High Broadband           |>= 80 to < 250               |>= 10 sec         |
++----------+-------------------------+-----------------------------+------------------+
+|**B**     |Broadband                |>= 10 to < 80                |>= 10 sec         |
++----------+-------------------------+-----------------------------+------------------+
+|**M**     |Mid Period               |> 1 to < 10                  |                  |
++----------+-------------------------+-----------------------------+------------------+
+|**L**     |Long Period              |~ 1                          |                  |
++----------+-------------------------+-----------------------------+------------------+
+|**V**     |Very Long Period         |>= 0.1 to < 1                |                  |
++----------+-------------------------+-----------------------------+------------------+
+|**U**     |Ultra Long Period        |>= 0.01 to < 0.1             |                  |
++----------+-------------------------+-----------------------------+------------------+
+|**W**     |Ultra-ultra Long Period  |>= 0.001 to < 0.01           |                  |
++----------+-------------------------+-----------------------------+------------------+
+|**R**     |Extremely Long Period    |>= 0.0001 to < 0.001         |                  |
++----------+-------------------------+-----------------------------+------------------+
+|**P**     |On order of 0.1 to 1 day |>= 0.00001 to < 0.0001       |                  |
++----------+-------------------------+-----------------------------+------------------+
+|**T**     |On order of 1 to 10 days |>= 0.000001 to < 0.00001     |                  |
++----------+-------------------------+-----------------------------+------------------+
+|**Q**     |Greater than 10 days     |< 0.000001                   |                  |
++----------+-------------------------+-----------------------------+------------------+
+|**I**     |Irregularly sampled      |irregular                    |                  |
++----------+-------------------------+-----------------------------+------------------+
+|**A**     |:strike:`Administrative` |variable, DEPRECATED         |                  |
++----------+-------------------------+-----------------------------+------------------+
+|**O**     |:strike:`Opaque`         |variable, DEPRECATED         |                  |
++----------+-------------------------+-----------------------------+------------------+
 
-
-
-Source and Position Codes
--------------------------
+Source and Subsource Codes
+--------------------------
 
 The source code specifies the family to which the sensor belongs or
 otherwise a general data source. In essence, this identifies what is
 being measured or simulated. Each of these source types are detailed in
 this section.
 
-The position code provides a way to indicate the directionality of the
-sensor measurement (orientation) or the relative location of the sensor.
-Position codes are source-specific. When orthogonal directions are used,
-there are traditional orientations of North (N), East (E), and Vertical
-(Z), as well as other orientations that can be converted to traditional
-ones. These options are detailed with each source type. Only use N or E
-for the orientation when it is within 5 degrees of north or east. Use 1
-or 2 when orientations are more than 5 degrees from north or east or to
-avoid any assumptions about the orientation and ensure that the metadata
-is consulted.
+The subsource code provides a way to indicate the directionality of
+the sensor measurement (orientation), the relative location of the
+sensor or the sensor type.  Subsource codes are source-specific.
+
+.. _geographic-orientation:
+
+   **Geographic orientation subsource codes**
+
+   Traditional orientation values of North-Source (N), East-West (E),
+   and Vertical (Z) should `only` be used when within 5 degress of
+   true directions.  Do not use **N** or **E** designations if the
+   orientation of horizontal components is known to deviate more than
+   5 degrees from true North/East.
+
+   For orthogonal components that are in nontraditional orientations,
+   if the orientation of the horizontal components is known to
+   deviate more than 5 degrees from true North and East, the
+   respective channels should be named **1**, **2** instead of N, E
+   (N->1, E->2).
+
+   For sources that record data in a direction typically aligned with
+   geographical coordinate systems, the subsource identifier should
+   follow these conventions (where appropriate):
+
+   +--------------------+------------------------------------------------------------+
+   |Subsource codes     | Description                                                |
+   +====================+============================================================+
+   |**N**, **E**, **Z** | Traditional orientations of North (N), East (E), and Up (Z)|
+   |                    |                                                            |
+   |                    | *When within 5 degrees of true directions*                 |
+   +--------------------+------------------------------------------------------------+
+   |**1**, **2**, **Z** | Orthogonal components, nontraditional horizontals          |
+   +--------------------+------------------------------------------------------------+
+   |**1**, **2**, **3** | Orthogonal components, nontraditional orientations         |
+   +--------------------+------------------------------------------------------------+
+   |**T**, **R**        | For rotated components or beams (Transverse, Radial)       |
+   +--------------------+------------------------------------------------------------+
+   |**A**, **B**, **C** | Triaxial (Along the edges of a cube turned up on a corner) |
+   +--------------------+------------------------------------------------------------+
+   |**U**, **V**, **W** | Optional components, also used for raw triaxial output     |
+   +--------------------+------------------------------------------------------------+
 
 Seismometer
 ^^^^^^^^^^^
@@ -122,23 +159,28 @@ Seismometer
       ======      ======
       **H**       High Gain Seismometer
       **L**       Low Gain Seismometer
-      **G**       Gravimeter
       **M**       Mass Position Seismometer
       **N**       Accelerometer
+      **P**       Geophone, very short period seismometer with natural frequency 5 - 10 Hz or higher
       ======      ======
 
-   *Position Code*
+   *Subsource Code* - See :ref:`Geographic orientation codes <geographic-orientation>` for more details.
 
-   .. table::
-      :align: left
-
-      ===================== ======
-      **Z**, **N**, **E**   Traditional (Vertical, North-South, East-West), when with 5 degrees of true directions
-      **A**, **B**, **C**   Triaxial (Along the edges of a cube turned up on a corner)
-      **T**, **R**          For formed beams or rotated components (Transverse, Radial)
-      **1**, **2**, **3**   Orthogonal components but non traditional orientations
-      **U**, **V**, **W**   Optional components
-      ===================== ======
+   +--------------------+------------------------------------------------------------+
+   |**N**, **E**, **Z** | Traditional orientations of North (N), East (E), and Up (Z)|
+   |                    |                                                            |
+   |                    | *When within 5 degrees of true directions*                 |
+   +--------------------+------------------------------------------------------------+
+   |**1**, **2**, **Z** | Orthogonal components, nontraditional horizontals          |
+   +--------------------+------------------------------------------------------------+
+   |**1**, **2**, **3** | Orthogonal components, nontraditional orientations         |
+   +--------------------+------------------------------------------------------------+
+   |**T**, **R**        | For rotated components or beams (Transverse, Radial)       |
+   +--------------------+------------------------------------------------------------+
+   |**A**, **B**, **C** | Triaxial (Along the edges of a cube turned up on a corner) |
+   +--------------------+------------------------------------------------------------+
+   |**U**, **V**, **W** | Optional components, also used for raw triaxial output     |
+   +--------------------+------------------------------------------------------------+
 
    Dip/Azimuth: Ground motion vector
 
@@ -154,9 +196,15 @@ Tilt Meter
 
    **A**
 
-   *Position Code*
+   *Subsource Code* - See :ref:`Geographic orientation codes <geographic-orientation>` for more details.
 
-   **N**, **E** - Traditional
+   +--------------------+------------------------------------------------------------+
+   |**N**, **E**        | Traditional orientations of North (N), East (E), and Up (Z)|
+   |                    |                                                            |
+   |                    | *When within 5 degrees of true directions*                 |
+   +--------------------+------------------------------------------------------------+
+   |**1**, **2**        | Orthogonal components, nontraditional orientations         |
+   +--------------------+------------------------------------------------------------+
 
    Dip/Azimuth: Ground motion vector
 
@@ -180,7 +228,7 @@ Creep Meter
 
    **B**
 
-   *Position Code*
+   *Subsource Code*
 
    None defined
 
@@ -201,9 +249,9 @@ Calibration Input
 
    **C**
 
-   *Position Code*
+   *Subsource Code*
 
-   **A**, **B**, **C**, **D** - For when there are only a few cal sources for many devices.
+   **A**, **B**, **C**, **D** - For when there are only a few calibration sources for many devices.
 
    Blank if there is only one calibrator at a time or, match calibrated
    channel (i.e. **Z**, **N** or **E**).
@@ -211,16 +259,15 @@ Calibration Input
 Pressure
 ^^^^^^^^
 
-   A barometer, or microbarometer that measures pressure. Used to
-   measure the atmospheric pressure or sometimes for state of health
-   monitoring down hole. This includes infrasonic and hydrophone
-   measurements.
+   A barometer, microbarometer, or other gauge that measures pressure.
+   Used to measure atmospheric, water, and any other pressure.  This
+   includes infrasonic and hydrophone measurements.
 
    *Source Code*
 
    **D**
 
-   *Position Code*
+   *Subsource Code*
 
    .. table::
       :align: left
@@ -230,11 +277,17 @@ Pressure
       **I**   Inside
       **D**   Down hole
       **F**   Infrasound
+      **G**   Deep sea differential pressure gauge
       **H**   Hydrophone
       **U**   Underground
       ======  ===========
 
-   Dip/Azimuth: Not applicable
+   Dip/Azimuth: For many pressure measurements Dip and Azimuth are not
+   applicable.  If the signal will be used for seismological
+   applications, set Dip to -90 if a positive pressure change gives a
+   positive signal, 90 if a positive pressure change gives a negative
+   signal. This will align polarities with the vertical seismometer
+   channel for UPGOING waves.
 
    Signal Units: ``Pa`` (Pascal)
 
@@ -248,7 +301,7 @@ Electronic Test Point
 
    **E**
 
-   *Position Code*
+   *Subsource Code*
 
    Designate as desired, make mnemonic as possible, use numbers for test
    points, etc.
@@ -260,25 +313,23 @@ Electronic Test Point
 Magnetometer
 ^^^^^^^^^^^^
 
-   Measures the magnetic field at the sensor location. They measure the
-   part of the field
+   Measures the magnetic field at the sensor location. They measure
+   the part of the field vector that is aligned with the measurement
+   coil. Many magnetometers are three axis. The instrument will
+   typically be oriented to local magnetic north. The dip and azimuth
+   should describe this in terms of the geographic north.
 
-   vector that is aligned with the measurement coil. Many magnetometers
-   are three axis. The instrument will typically be oriented to local
-   magnetic north. The dip and azimuth should describe this in terms of
-   the geographic north.
-
-   Example: Local magnetic north is 13 degrees east of north in
-   Albuquerque. So if the magnetometer is pointed to magnetic north, the
+   Example: Assuming magnetic north is 13 degrees east of north at the
+   recording site, if the magnetometer is pointed to magnetic north, the
    azimuth would be + 103 for the E channel. Some magnetometers do not
    record any vector quantity associated with the signal, but record the
-   total intensity. So, these would not have any dip/ azimuth.
+   total intensity. So, these would not have any dip or azimuth.
 
    *Source Code*
 
    **F**
 
-   *Position Code*
+   *Subsource Code*
 
    **Z**, **N**, **E** - Magnetic
 
@@ -296,7 +347,7 @@ Humidity
 
    **I**
 
-   *Position Code*
+   *Subsource Code*
 
    .. table::
       :align: left
@@ -322,21 +373,25 @@ Rotational Sensor
 
    *Source Code*
 
-   **J** - High Gain Seismometer
+   **J** - Rotation rate sensor
 
-   *Position Code*
+   *Subsource Code* - See :ref:`Geographic orientation codes <geographic-orientation>` for more details.
 
-   .. table::
-      :align: left
-
-      ==========================   ===========
-      **Z**, **N**, **E**          Traditional (Vertical, North-South, East-West)
-      **A**, **B**, **C**          Triaxial (Along the edges of a cube turned up on a corner)
-      **T**, **R**                 For formed beams (Transverse, Radial)
-      **Z**, **1**, **2**          Orthogonal components, but non traditional horizontal orientations
-      **1**, **2**, **3**          Orthogonal components, but non traditional orientations
-      **U**, **V**, **W**          Optional components
-      ==========================   ===========
+   +--------------------+------------------------------------------------------------+
+   |**N**, **E**, **Z** | Traditional orientations of North (N), East (E), and Up (Z)|
+   |                    |                                                            |
+   |                    | *When within 5 degrees of true directions*                 |
+   +--------------------+------------------------------------------------------------+
+   |**1**, **2**, **Z** | Orthogonal components, nontraditional horizontals          |
+   +--------------------+------------------------------------------------------------+
+   |**1**, **2**, **3** | Orthogonal components, nontraditional orientations         |
+   +--------------------+------------------------------------------------------------+
+   |**T**, **R**        | For rotated components or beams (Transverse, Radial)       |
+   +--------------------+------------------------------------------------------------+
+   |**A**, **B**, **C** | Triaxial (Along the edges of a cube turned up on a corner) |
+   +--------------------+------------------------------------------------------------+
+   |**U**, **V**, **W** | Optional components, also used for raw triaxial output     |
+   +--------------------+------------------------------------------------------------+
 
    Dip/Azimuth: Axis about which rotation is measured following
    right-handed rule.
@@ -363,7 +418,7 @@ Temperature
 
    **K**
 
-   *Position Code*
+   *Subsource Code*
 
    .. table::
       :align: left
@@ -389,7 +444,7 @@ Water Current
 
    **O**
 
-   *Position Code*
+   *Subsource Code*
 
    None defined
 
@@ -399,26 +454,30 @@ Water Current
 
    .. note::
       The special, administrative channel codes of **L_O_G** and
-      **S_O_H** (deprecated) do not denote water current and should be
+      **S_O_H** (both deprecated) do not denote water current and should be
       avoided when using the “O” Source Code.
 
-Geophone
-^^^^^^^^
+Gravimeter
+^^^^^^^^^^
 
-   Very short period seismometer, with natural frequency 5 - 10 Hz or
-   higher.
+   Measurement of a gravitational field.
 
    *Source Code*
 
-   **P**
+   **G** - Gravitaional sensor
 
-   *Position Code*
+   *Subsource Code*
 
-   **Z**, **N**, **E** - Traditional
+   **Z** - Traditionally
+   **1** - Unknown, or not vertical**
 
-   Dip/Azimuth: Ground Motion Vector
+   *Note*: historically some channels from accelerometers have used a
+   instrumentation code of **G**. As of August 2000 the FDSN defined
+   the use of this code as limited to gravity.
 
-   Signal Units: ``m``, ``m/s``, ``m/s**2``
+   Dip/Azimuth: Gravity field Vector
+
+   Signal Units: ``m/s**2``
 
 Electric Potential
 ^^^^^^^^^^^^^^^^^^
@@ -432,7 +491,7 @@ Electric Potential
 
    **Q**
 
-   *Position Code*
+   *Subsource Code*
 
    None defined
 
@@ -449,9 +508,9 @@ Rainfall
 
    **R**
 
-   *Position Code*
+   *Subsource Code*
 
-   **Z**, **N**, **E** - Traditional
+   None defined
 
    Dip/Azimuth: Not applicable
 
@@ -466,9 +525,15 @@ Linear Strain
 
    **S**
 
-   *Position Code*
+   *Subsource Code* - See :ref:`Geographic orientation codes <geographic-orientation>` for more details.
 
-   **Z**, **N**, **E** - Vertical, North-South, East-West
+   +--------------------+------------------------------------------------------------+
+   |**N**, **E**, **Z** | Traditional orientations of North (N), East (E), and Up (Z)|
+   |                    |                                                            |
+   |                    | *When within 5 degrees of true directions*                 |
+   +--------------------+------------------------------------------------------------+
+   |**1**, **2**, **3** | Nontraditional orientations                                |
+   +--------------------+------------------------------------------------------------+
 
    Dip/Azimuth: Along axis of measurement
 
@@ -484,7 +549,7 @@ Tide
 
    **T**
 
-   *Position Code*
+   *Subsource Code*
 
    **Z** - Always vertical
 
@@ -502,7 +567,7 @@ Bolometer
 
    **U**
 
-   *Position Code*
+   *Subsource Code*
 
    None defined
 
@@ -515,7 +580,7 @@ Volumetric Strain
 
    **V**
 
-   *Position Code*
+   *Subsource Code*
 
    None defined
 
@@ -533,7 +598,7 @@ Wind
 
    **W**
 
-   *Position Code*
+   *Subsource Code*
 
    .. table::
       :align: left
@@ -541,6 +606,8 @@ Wind
       =====  ===========
       **S**  Windspeed
       **D**  Wind direction vector, relative to geographic north
+      **H**  Horizontal wind speed
+      **Z**  Vertical wind speed
       =====  ===========
 
    Dip/Azimuth: Not applicable
@@ -562,10 +629,10 @@ Derived or generated channel
 
    **X**
 
-   *Position Code*
+   *Subsource Code*
 
    Similar to the observable data that was modified or the observable
-   equivalent for generated time series (synthetics). See Position Codes
+   equivalent for generated time series (synthetics). See subsource codes
    for the corresponding observed channel.
 
    **Further Usage (DEPRECATED)**
@@ -594,7 +661,7 @@ Non-specific instruments
 
    **Y**
 
-   *Position Code*
+   *Subsource Code*
 
    Instrument specific.
 
@@ -617,7 +684,7 @@ Synthesized Beams
 
    **Z**
 
-   *Position Code*
+   *Subsource Code*
 
    .. table::
       :align: left
