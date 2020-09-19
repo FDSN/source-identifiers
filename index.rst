@@ -34,6 +34,7 @@ formats and services.
    network-codes
    location-codes
    channel-codes
+   changes
    background
    FDSN home <https://www.fdsn.org/>
 
