@@ -4,9 +4,9 @@ This specification defines the construction of unique identifiers for data sourc
 
 This repository contains the source of the documentation and serves as a coordination point for additions and changes to the specification.
 
-Documentation rendered for the `master` branch can be found at: https://iris-edu.github.io/FDSN-source-identifiers/
+Documentation rendered for the `master` branch can be found at: https://github.com/FDSN/source-identifiers/
 
-Specification releases are at: https://some.where.read.the.docs?
+Specification releases are at: https://docs.fdsn.org/projects/source-identifiers
 
 ## Documentation source organization
 
@@ -37,5 +37,5 @@ Changes and issues should only be grouped together when logically
 related in order to streamline review and acceptance.
 
 ## Documentation build and publishing status:
-![](https://github.com/iris-edu/FDSN-source-identifiers/workflows/build-sphinx-gh-pages/badge.svg)
+![](http://docs.fdsn.org/projects/source-identifiers/en/latest/?badge=latest)
 
