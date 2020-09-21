@@ -92,9 +92,6 @@ where network=NL, station=HGN, location is empty and channel=L_H_Z
 The ``FDSN:`` portion is a namespace identifier reserved to identify this
 specification.
 
-The formal ``urn:`` URI scheme prefix is not included in source
-identifiers within FDSN formats.
-
 Mapping of SEED 2.4 codes
 -------------------------
 

@@ -24,7 +24,7 @@ author = 'FDSN'
 
 # The full version, including alpha/beta/rc tags
 release = '0.0.0'
-version = '0.0.0DRAFT'
+version = '0.0.0 DRAFT'
 
 # -- General configuration ---------------------------------------------------
 

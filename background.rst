@@ -54,7 +54,7 @@ codes as used in SEED 2.4.
    network codes are much larger than in SEED, they can be globally unique
    and would not need to be re-used.
 
--  Specify a Uniform Resource Identifier (URN)-like string as a “source identifier”
+-  Specify a Uniform Resource Identifier (URI)-like string as a “source identifier”
    (SID) constructed from a combination of the network, station,
    location and channel codes. This SID provides a convenient, flexible,
    single identifier for use in data formats, request mechanisms, etc.
