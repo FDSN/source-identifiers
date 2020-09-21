@@ -37,5 +37,4 @@ Changes and issues should only be grouped together when logically
 related in order to streamline review and acceptance.
 
 ## Documentation build and publishing status:
-![](http://docs.fdsn.org/projects/source-identifiers/en/latest/?badge=latest)
-
+[![Documentation Status](https://readthedocs.org/projects/source-identifiers/badge/?version=latest)](http://docs.fdsn.org/projects/source-identifiers/en/latest/?badge=latest)
