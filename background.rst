@@ -13,6 +13,9 @@ research data archiving and exchange.
 This specification of identifier is an expansion and enhancement of
 the identifiers defined in SEED version 2.4.
 
+.. _changes-from-SEED:
+
+---------------------
 Changes from SEED 2.4
 ---------------------
 
@@ -60,3 +63,18 @@ codes as used in SEED 2.4.
    single identifier for use in data formats, request mechanisms, etc.
    while allowing mapping back-and-forth between the SID and the
    separate codes as needed.
+
+-  Specific sampling rate ranges for band codes:
+     - **U**: >= 0.01 to < 0.1 sps
+     - **V**: >= 0.1 to < 1 sps
+
+-  Band code **W** added to fill the sampling rate gap between **U** and **R**:
+     - **W**: >= 0.001 to < 0.01 sps
+
+-  Band code **J** added for > 5000 sps.
+
+-  Band code **I** added for irregular sampling.
+
+-  Band code **A**, **O** deprecated.
+
+-  Source codes **X**, **Y** deprecated.
