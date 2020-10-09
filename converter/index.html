@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset='utf-8'>
+    <title>Convert NSLC <-> sourceId</title>
+    <style>
+    button {
+      background-color: #4CAF50; /* Green */
+      border: none;
+      color: white;
+      margin: 5px;
+      padding: 5px 10px;
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
+      font-size: 16px;
+      border-radius: 12px;
+    }
+    p.message {
+      color: red;
+    }
+    </style>
+  </head>
+  <body>
+    <h3>Convert NSLC (SEED 2.4) to/from
+      <a href="http://docs.fdsn.org/projects/source-identifiers/en/v1.0/index.html">FDSN Source Id</a>
+    </h3>
+    <p>
+      Javascript code used for this is in <a target="_blank" download href="fdsnsourceid.js">fdsnsourceid.js</a>.
+    </p>
+
+    <div id="nslcDiv">
+      <h3>SEED NSLC</h3>
+      <div>
+        <label for="net">Network (1-2):</label>
+        <input type="text" id="net" name="net" required minlength="1" maxlength="2" size="10">
+        <label for="sta">Station (1-5):</label>
+        <input type="text" id="sta" name="sta"  minlength="1" maxlength="5" size="10">
+        <label for="loc">Location (0-2):</label>
+        <input type="text" id="loc" name="loc"  minlength="0" maxlength="2" size="10">
+        <label for="chan">Channel (3):</label>
+        <input type="text" id="chan" name="chan"  minlength="3" maxlength="3" size="10">
+      </div>
+      <button id="nslctosid">from SEED NSLC</button>
+    </div>
+
+    <div id="sourceidDiv">
+      <h3>FDSN Source Id</h3>
+      <div>
+        <label for="sid">Source Id (<64):</label>
+        <input type="text" id="sid" name="sid" required minlength="1" maxlength="64" size="64">
+      </div>
+      <button id="sidtonslc">from FDSN Source Id</button>
+    </div>
+
+    <div id="parsedsourceidDiv">
+      <h3>Parsed FDSN Source Id</h3>
+      <div>
+        <label for="sidnet">Network:</label>
+        <input type="text" id="sidnet" name="sidnet"  minlength="1" maxlength="8" size="10">
+        <label for="sidsta">Station:</label>
+        <input type="text" id="sidsta" name="sidsta"  minlength="1" maxlength="8" size="10">
+        <label for="sidloc">Location:</label>
+        <input type="text" id="sidloc" name="sidloc"  minlength="0" maxlength="8" size="10">
+        <label for="sidband">Band:</label>
+        <input type="text" id="sidband" name="sidband"  minlength="0" maxlength="3" size="10">
+        <label for="sidsource">Source:</label>
+        <input type="text" id="sidsource" name="sidsource"  minlength="1" maxlength="3" size="10">
+        <label for="sidubsource">Subsource:</label>
+        <input type="text" id="sidsubsource" name="sidsubsource"  minlength="0" maxlength="3" size="10">
+      </div
+      <div>
+        <label for="sidtempnetcode">Temp Network:</label>
+        <input type="text" id="sidtempnetcode" name="sidtempnetcode"  minlength="1" maxlength="2" size="10">
+        <label for="sidtempnetyear">Year:</label>
+        <input type="text" id="sidtempnetyear" name="sidtempnetyear"  minlength="4" maxlength="4" size="10">
+      </div>
+      <button id="parsedsidtonslc">from Parsed FDSN Source Id</button>
+    </div>
+
+    <div>
+      <h3>Messages:</h3>
+      <p class="message" id="message">
+      </p>
+    </div>
+
+    <script src="fdsnsourceid.js"></script>
+    <script>
+
+      const nsclBtn = document.getElementById('nslctosid');
+      nsclBtn.addEventListener('click', function(event) {
+        try {
+          document.getElementById("message").textContent = '';
+          const net = document.getElementById('net').value;
+          const sta = document.getElementById('sta').value;
+          const loc = document.getElementById('loc').value;
+          const chan = document.getElementById('chan').value;
+          const sid = nslcToSid(net, sta, loc, chan);
+          document.getElementById('sid').value = sid;
+          const parsed = parseSid(sid);
+          document.getElementById('sidnet').value = parsed.sid.net;
+          document.getElementById('sidsta').value = parsed.sid.sta;
+          document.getElementById('sidloc').value = parsed.sid.loc;
+          document.getElementById('sidband').value = parsed.sid.band;
+          document.getElementById('sidsource').value = parsed.sid.source;
+          document.getElementById('sidsubsource').value = parsed.sid.subsource;
+        } catch(err) {
+          console.assert(false, err);
+          let textNode = document.createTextNode(`Error: ${err}`);
+          document.getElementById('message').appendChild(textNode);
+        }
+      });
+
+      const sidBtn = document.getElementById('sidtonslc');
+      sidBtn.addEventListener('click', function(event) {
+        try {
+          document.getElementById("message").textContent = '';
+          const sid = document.getElementById('sid').value;
+          const parsed = parseSid(sid);
+
+          document.getElementById('sidnet').value = parsed.sid.net;
+          document.getElementById('sidtempnetcode').value = parsed.sid.tempNetCode;
+          document.getElementById('sidtempnetyear').value = parsed.sid.tempNetYear;
+          document.getElementById('sidsta').value = parsed.sid.sta;
+          document.getElementById('sidloc').value = parsed.sid.loc;
+          document.getElementById('sidband').value = parsed.sid.band;
+          document.getElementById('sidsource').value = parsed.sid.source;
+          document.getElementById('sidsubsource').value = parsed.sid.subsource;
+          if (parsed.seed) {
+            document.getElementById('net').value = parsed.seed.net;
+            document.getElementById('sta').value = parsed.seed.sta;
+            document.getElementById('loc').value = parsed.seed.loc;
+            document.getElementById('chan').value = parsed.seed.chan;
+          } else {
+            let textNode = document.createTextNode(`Unable to map to SEED NSLC: ${parsed.reason}`);
+            document.getElementById('message').appendChild(textNode);
+
+            document.getElementById('net').value = '';
+            document.getElementById('sta').value = '';
+            document.getElementById('loc').value = '';
+            document.getElementById('chan').value = '';
+          }
+        } catch(err) {
+          console.assert(false, err);
+          let textNode = document.createTextNode(`Error: ${err}`);
+          document.getElementById('message').appendChild(textNode);
+        }
+      });
+
+      const parsesidBtn = document.getElementById('parsedsidtonslc');
+      parsesidBtn.addEventListener('click', function(event) {
+        try {
+          document.getElementById("message").textContent = '';
+          let net = document.getElementById('sidnet').value;
+          if (document.getElementById('sidtempnetcode').value) {
+            // temp net and year are used if they exist
+            net = `${document.getElementById('sidtempnetcode').value}${document.getElementById('sidtempnetyear').value}`;
+            document.getElementById('sidnet').value = net;
+          } else {
+            let tempNet = tempNetRegEx.exec(net);
+            if (tempNet) {
+              document.getElementById('sidtempnetcode').value = tempNet[1];
+              document.getElementById('sidtempnetyear').value = tempNet[2];
+            } else {
+              document.getElementById('sidtempnetcode').value = '';
+              document.getElementById('sidtempnetyear').value = '';
+            }
+          }
+          const sta = document.getElementById('sidsta').value;
+          let loc = document.getElementById('sidloc').value;
+          let band = document.getElementById('sidband').value;
+          const source = document.getElementById('sidsource').value;
+          let subsource = document.getElementById('sidsubsource').value;
+          if (loc === '--' || (loc === null && source)) {
+            // either dash loc, or we have a source, so make loc empty string instead of null
+            loc = '';
+          }
+          if (source) {
+            // make sure empty string instead of null
+            band = band ? band : '';
+            subsource = subsource ? subsource : '';
+          }
+          const parsed = {
+              'net': net,
+              'tempNetCode': null,
+              'tempNetYear': null,
+              'sta': sta,
+              'loc': loc,
+              'band': band,
+              'source': source,
+              'subsource': subsource
+          };
+          console.log(`parse input: ${JSON.stringify(parsed)}`);
+          const sid = parsedToSid(parsed);
+          document.getElementById('sid').value = sid;
+          const reparsed = parseSid(sid);
+          if (reparsed.seed) {
+            document.getElementById('net').value = reparsed.seed.net;
+            document.getElementById('sta').value = reparsed.seed.sta;
+            document.getElementById('loc').value = reparsed.seed.loc;
+            document.getElementById('chan').value = reparsed.seed.chan;
+          } else {
+            let textNode = document.createTextNode(`Unable to map to SEED NSLC: ${reparsed.reason}`);
+            document.getElementById('message').appendChild(textNode);
+            document.getElementById('net').value = '';
+            document.getElementById('sta').value = '';
+            document.getElementById('loc').value = '';
+            document.getElementById('chan').value = '';
+          }
+        } catch(err) {
+          console.assert(false, err);
+          let textNode = document.createTextNode(`Error: ${err}`);
+          document.getElementById('message').appendChild(textNode);
+        }
+      });
+
+      document.getElementById('sidnet').addEventListener('input', function(event) {
+        document.getElementById('sidtempnetcode').value = '';
+        document.getElementById('sidtempnetyear').value = '';
+      });
+
+      document.getElementById('sidtempnetcode').addEventListener('input', function(event) {
+        document.getElementById('sidnet').value = '';
+      });
+    </script>
+  </body>
+</html>
