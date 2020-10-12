@@ -52,7 +52,7 @@ Source Identifiers
 
 The FDSN Source Identifier (SID) is a combination of the network, station,
 location, band, source and subsource codes into a
-`Uniform Resource Identifier https://en.wikipedia.org/wiki/Uniform_Resource_Identifier`_
+`Uniform Resource Identifier <https://en.wikipedia.org/wiki/Uniform_Resource_Identifier>`_
 (URI). The pattern of the Source Identifier is as follows:
 
 For identifying a data source, i.e. a specific channel:
