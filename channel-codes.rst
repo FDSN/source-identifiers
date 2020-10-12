@@ -25,7 +25,7 @@ follows:
    empty.
 
 A *channel* is the combination of these three codes separated by "_"
-(ASCII 95) in the following pattern: ``band_source_subsource``, which
+(ASCII 95) in the following pattern: ``Band_Source_Subsource``, which
 forms the end of a source identifier.
 
 For usage of Band codes **A** and **O** (both deprecated), the source
@@ -38,10 +38,19 @@ Two sequences are reserved for special channels, both deprecated:
 **L_O_G** for the console log and **S_O_H** for general state of health.
 
 .. note::
-   All *channels* with single-character *band*, *source*, and
-   *subsource* codes are equivalent to SEED 2.4 channel designations
+   All *channels* with single-character ``Band``, ``Source``, and
+   ``Subsource`` codes are equivalent to SEED 2.4 channel designations
    and vice versa.
 
+   Importantly, a 3-character SEED channel code set such as **LHZ** is
+   *not* a valid channel designation in a Source Identifier, but
+   always has an equivalent designation in ``Band_Source_Subsource``
+   form, and can be converted back and forth as needed by adding or
+   removing the underscore characters.
+
+   Systems that handle these identifier codes separately such as web
+   service implementations, may wish to accept both SEED and extended
+   channel forms and convert to whichever is needed for internal use.
 
 Band Code
 ---------
