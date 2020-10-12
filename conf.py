@@ -85,7 +85,7 @@ html_js_files = [
 ]
 
 # Mark as draft, disable for releases
-sphinxmark_enable = True
+sphinxmark_enable = False
 
 # Sphinxmark options, 'document' is the div for the RTD theme body
 sphinxmark_div = 'document'
