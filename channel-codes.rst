@@ -42,16 +42,6 @@ Two sequences are reserved for special channels, both deprecated:
    ``Subsource`` codes are equivalent to SEED 2.4 channel designations
    and vice versa.
 
-   Importantly, a 3-character SEED channel code set such as **LHZ** is
-   *not* a valid channel designation in a Source Identifier, but
-   always has an equivalent designation in ``Band_Source_Subsource``
-   form, and can be converted back and forth as needed by adding or
-   removing the underscore characters.
-
-   Systems that handle these identifier codes separately such as web
-   service implementations, may wish to accept both SEED and extended
-   channel forms and convert to whichever is needed for internal use.
-
 Band Code
 ---------
 
