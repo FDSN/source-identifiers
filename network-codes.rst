@@ -44,6 +44,9 @@ this pattern:
 
    <2-character code><4-digit start year>
 
+where the initial character is a digit (``0-9``) or the letters ``X``,
+``Y`` or ``Z``.
+
 For example, a network deployment allocated a network code of ``XA``
 operating in the years 2002 and 2003 could be mapped to ``XA2002``.
 
