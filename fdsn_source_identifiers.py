@@ -24,6 +24,14 @@ location_seed_re = re.compile('^[A-Z0-9]{0,2}$')
 channel_seed_re = re.compile('^[A-Z0-9]{3,3}$')
 channel_seed_compat_re = re.compile('^[A-Z0-9]_[A-Z0-9]_[A-Z0-9]$')
 
+# Transitional temporary network mappable to SEED-compatible codes (e.g. XX####)
+# Restricted to sane years: 1000-2999
+network_transition_seed_re = re.compile('^[XYZ0-9].[12][0-9]{3,3}$')
+
+class MappableNetwork(ValueError):
+    """Raised for an invalid but mappable network code"""
+    pass
+
 class SourceID(object):
     """Class for FDSN Source Identifiers: http://docs.fdsn.org/projects/source-identifiers
 
@@ -97,7 +105,7 @@ class SourceID(object):
         else:
             return cls(f'FDSN:{network}_{station}_{location}_{channel}')
 
-    def to_seed(self, validate=True):
+    def to_seed(self, validate=True, map_temporary_network=True):
         """Split a Source Identifier into SEED network, station, location, channel codes
 
         An extended channel the form "BAND_SOURCE_SUBSOURCE" is collapsed to SEED channel codes.
@@ -112,11 +120,18 @@ class SourceID(object):
         # Split into 4 codes and skip "FDSN:" prefix
         network, station, location, channel, *_ = self.sourceid[5:].split('_', maxsplit=3) + [None] * 4
 
+        # Map temporary network codes in transitional pattern to short SEED codes
+        if network_transition_seed_re.match(network):
+            if map_temporary_network:
+                network = network[0:2]
+            else:
+                raise MappableNetwork(f"Invalid SEED network code:'{network}', but mappable via transitional convention")
+
         # Collapse extended channel (band_source_subsource) to a SEED channel
         if channel and channel_seed_compat_re.match(channel):
             channel = f'{channel[0]}{channel[2]}{channel[4]}'
 
-        # Enforce SEED code length limits
+        # Enforce SEED codes
         if validate:
             errs = []
 
@@ -172,11 +187,21 @@ if __name__ == "__main__":
         if args.verbose:
             print (f'Generating SEED network, station, location, channel from SourceID {sid}')
 
-        try:
-            network, station, location, channel, *_ = SourceID(sid).to_seed() + [None] * 4
-        except Exception as e:
-            print(e)
-            sys.exit(1)
+        # First try with temporary network code mapping disabled
+        map_network = False
+
+        while True:
+            try:
+                network, station, location, channel, *_ = SourceID(sid).to_seed(map_temporary_network=map_network) + [None] * 4
+            except MappableNetwork as e:
+                # Print exception and re-try with temporary network code mapping enabled
+                print(e)
+                map_network = True
+                continue
+            except Exception as e:
+                print(e)
+                sys.exit(1)
+            break
 
         print (f"Input SourceID: '{sid}'")
         print ("=> {}{}{}{}".
