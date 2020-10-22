@@ -207,9 +207,9 @@ if __name__ == "__main__":
         print ("=> {}{}{}{}".
                format(
                    f"Network: '{network}'",
-                   f" Station: '{station}'" if station else '',
-                   f" Location: '{location}'" if location else '',
-                   f" Channel: '{channel}'" if channel else ''))
+                   f" Station: '{station}'" if station is not None else '',
+                   f" Location: '{location}'" if location is not None else '',
+                   f" Channel: '{channel}'" if channel is not None else ''))
 
     # Otherwise individual SEED codes are provided, convert to SourceID
     elif len(args.inputcodes) > 0:
@@ -227,9 +227,9 @@ if __name__ == "__main__":
         print ("Input {}{}{}{}".
                format(
                    f"Network: '{network}'",
-                   f" Station: '{station}'" if station else '',
-                   f" Location: '{location}'" if location else '',
-                   f" Channel: '{channel}'" if channel else ''))
+                   f" Station: '{station}'" if station is not None else '',
+                   f" Location: '{location}'" if location is not None else '',
+                   f" Channel: '{channel}'" if channel is not None else ''))
         print (f"=> SourceID: '{sid}'")
 
     else:
