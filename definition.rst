@@ -1,5 +1,3 @@
-. vim: syntax=rst
-
 =========================
 Definition of identifiers
 =========================
