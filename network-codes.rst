@@ -1,5 +1,3 @@
-.. vim: syntax=rst
-
 .. _network-codes:
 
 =========================
