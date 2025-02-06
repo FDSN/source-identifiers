@@ -12,7 +12,7 @@ Specification releases are at: https://docs.fdsn.org/projects/source-identifiers
 
 * The `draft` branch contains the latest draft documentation. All changes are first applied to
   this branch for review and merged with main for releases
-* Specification releases are tags in the form `v.#.#-d#` on the `main` branch, following a release:
+* Specification releases are tags in the form `v.#.#-d#`.
 
 ## Versioning
 
